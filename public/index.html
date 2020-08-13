@@ -8,30 +8,13 @@
   <body>
     
     <div id="root"></div>
+    <p id="demo"></p>
     
     <script>
-      class Car{
-        constructor(name){
-          this.brand = name;
-        }
-
-        present(){
-          return "I have a " + this.brand;
-        }
+      hello = function(){
+        return "Hello World!";
       }
-
-      class Model extends Car{
-        constructor(name,mod){
-          super(name);
-          this.model = mod;
-        }
-
-        show(){
-          return this.present() + ", it is a " + this.model;
-        }
-      }
-      mycar = new Model("Toyota","Camry");
-      document.write(mycar.show());
+      document.getElementById("demo").innerHTML = hello();
     </script>
   </body>
 </html>
