@@ -9,5 +9,18 @@
     
     <div id="root"></div>
     
+    <script>
+      class Car{
+        constructor(name){
+          this.brand = name;
+        }
+
+        present(){
+          return "I have a " + this.brand;
+        }
+      }
+      mycar = new Car("Toyota");
+      document.write(mycar.present());
+    </script>
   </body>
 </html>
