@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const myelement = (
-    <ul>
-        <li>Apples</li>
-        <li>Bananas</li>
-        <li>Cherries</li>
-    </ul>
+    <div>
+        <h1>I am a Header</h1>
+        <h1>I am a Header too.</h1>
+    </div>
 );
 ReactDOM.render(myelement, document.getElementById("root"));
