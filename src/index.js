@@ -1,17 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const myelement = (
-    <table>
-        <tr>
-            <th>Name</th>
-        </tr>
-        <tr>
-            <th>John</th>
-        </tr>
-        <tr>
-            <td>Pham</td>
-        </tr>
-    </table>
-);
+const myelement = <h1>React is {5 + 5} times better with JSX!</h1>
 ReactDOM.render(myelement, document.getElementById("root"));
