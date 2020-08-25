@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const myelement = (
-    <div>
-        <h1>I am a Header</h1>
-        <h1>I am a Header too.</h1>
-    </div>
+    <input type="text" />
 );
 ReactDOM.render(myelement, document.getElementById("root"));
