@@ -9,10 +9,12 @@ class Car extends React.Component {
 
 class Garage extends React.Component{
     render(){
+        const color="red";
+        const brand="Ford";
         return(
             <div>
                 <h1>Who lives in my Garage ?</h1>
-                <Car color="white" brand="Acura" />
+                <Car color={color} brand={brand} />
             </div>
         );
     }
