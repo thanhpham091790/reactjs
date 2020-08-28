@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Header extends React.Component{
-    constructor(props){
+class Header extends React.Component {
+    constructor(props) {
         super(props);
-        this.state = {favoritecolor:"silver"}
+        this.state = { favoritecolor: "silver" }
     }
-    
-    render(){
-        return(
-        <h1>My favorite color is {this.state.favoritecolor}.</h1>
+
+    static getDerivedStateFromProps(props, state){
+        return ({favoritecolor:props.favcol});
+    }
+
+    render() {
+        return (
+            <h1>My favorite color is {this.state.favoritecolor}.</h1>
         );
     }
 }
 
-ReactDOM.render(<Header />, document.getElementById("root"));
+ReactDOM.render(<Header favcol="yellow" />, document.getElementById("root"));
