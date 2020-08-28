@@ -1,31 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Header extends React.Component {
-
-    constructor(props) {
+class Container extends React.Component{
+    constructor(props){
         super(props);
-        this.state = { favoritecolor: "red" };
+        this.state = {
+            show: true
+        };
     }
 
-    componentDidMount(){
-        setTimeout(()=>{
-            this.setState({favoritecolor:"yellow"})
-        },3000);
+    delHeader = () =>{
+        this.setState({show: false});
     }
 
-    componentDidUpdate(){
-        document.getElementById("mydiv").innerHTML = "The updated favorite color is " + this.state.favoritecolor;
-    }
-   
-    render() {
-        return (
+    render(){
+        let myheader;
+        if(this.state.show){
+            myheader = <Child />;
+        }
+        return(
             <div>
-                <h1>My favorite color is {this.state.favoritecolor}.</h1>
-                <div id="mydiv"></div>
+                {myheader}
+                <button type="button" onClick={this.delHeader}>Delete Header</button>
             </div>
         );
     }
 }
 
-ReactDOM.render(<Header />, document.getElementById("root"));
+class Child extends React.Component{
+    componentWillUnmount(){
+        alert("The component named Header is about to be unmounted.");
+    }
+
+    render(){
+        return(
+            <h1>Hello Pham Hong Thanh!</h1>
+        );
+    }
+}
+
+ReactDOM.render(<Container />, document.getElementById("root"));
