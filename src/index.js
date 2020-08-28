@@ -14,8 +14,8 @@ class Header extends React.Component {
         });
     }
 
-    static getDerivedStateFromProps(props, state){
-        return({favoritecolor:props.favcolor});
+    shouldComponentUpdate(){
+        return false;
     }
 
     render() {
