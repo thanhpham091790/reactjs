@@ -9,7 +9,7 @@ class Football extends React.Component{
 
     render(){
         return(
-            <button onClick={(ev) => this.shoot("Goal",ev)}>Take the shot!</button>
+            <button onClick={this.shoot.bind(this,"Goal")}>Take the shot!</button>
         );
     }
 }
