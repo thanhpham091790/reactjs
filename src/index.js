@@ -2,8 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Football extends React.Component{
-    shoot = () =>{
-        alert("Good Shot!");
+    constructor(props){
+        super(props);
+        this.shoot = this.shoot.bind(this);
+    }
+
+    shoot(){
+        alert(this);
     }
     render(){
         return(
