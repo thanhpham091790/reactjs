@@ -6,20 +6,24 @@ class MyForm extends React.Component {
         super(props);
         this.state = {
             username: '',
-            age: null
+            age: null,
+            errormessage: ''
         };
     }
 
     myChangeHandler = (event) => {
         let nam = event.target.name;
         let val = event.target.value;
-
+        let err = '';
+        
         if (nam == 'age') {
-            if (!Number(val)) {
-                alert("Your age must be a number");
+            if (!Number(val) && val!='') {
+               err = <strong>Your age must be a number</strong>;
             }
         }
-
+        this.setState({
+            errormessage: err
+        });
         this.setState({
             [nam]: val
         });
@@ -44,6 +48,7 @@ class MyForm extends React.Component {
                 <input type="text" name="username" onChange={this.myChangeHandler} />
                 <p>Enter your age:</p>
                 <input type="text" name="age" onChange={this.myChangeHandler} />
+                {this.state.errormessage}
                 <p></p>
                 <input type="submit" value="Submit" />
             </form>
