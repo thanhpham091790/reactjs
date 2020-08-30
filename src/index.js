@@ -13,12 +13,19 @@ class MyForm extends React.Component {
     myChangeHandler = (event) => {
         let nam = event.target.name;
         let val = event.target.value;
+
+        if (nam == 'age') {
+            if (!Number(val)) {
+                alert("Your age must be a number");
+            }
+        }
+
         this.setState({
             [nam]: val
         });
     }
 
-    mySubmitHandler = (event) =>{
+    mySubmitHandler = (event) => {
         event.preventDefault();
         alert("You are submitting " + this.state.username);
     }
@@ -26,8 +33,8 @@ class MyForm extends React.Component {
     render() {
         let header = '';
         if (this.state.username && this.state.age) {
-        header = <h1>Hello {this.state.username} {this.state.age}</h1>;
-        }else{
+            header = <h1>Hello {this.state.username} {this.state.age}</h1>;
+        } else {
             header = '';
         }
         return (
