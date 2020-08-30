@@ -7,6 +7,7 @@ class MyForm extends React.Component {
         this.state = {
             username: '',
             age: null,
+            quote: 'Hello world! My name is Pham Hong Thanh',
             errormessage: ''
         };
     }
@@ -15,7 +16,7 @@ class MyForm extends React.Component {
         let nam = event.target.name;
         let val = event.target.value;
         let err = '';
-        
+
         if (nam == 'age') {
             if (!Number(val) && val!='') {
                err = <strong>Your age must be a number</strong>;
@@ -49,6 +50,8 @@ class MyForm extends React.Component {
                 <p>Enter your age:</p>
                 <input type="text" name="age" onChange={this.myChangeHandler} />
                 {this.state.errormessage}
+                <p>Enter your quote:</p>
+                <textarea value={this.state.quote} />
                 <p></p>
                 <input type="submit" value="Submit" />
             </form>
