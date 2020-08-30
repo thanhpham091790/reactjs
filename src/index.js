@@ -8,6 +8,7 @@ class MyForm extends React.Component {
             username: '',
             age: null,
             quote: 'Hello world! My name is Pham Hong Thanh',
+            car: "Volvo",
             errormessage: ''
         };
     }
@@ -18,8 +19,8 @@ class MyForm extends React.Component {
         let err = '';
 
         if (nam == 'age') {
-            if (!Number(val) && val!='') {
-               err = <strong>Your age must be a number</strong>;
+            if (!Number(val) && val != '') {
+                err = <strong>Your age must be a number</strong>;
             }
         }
         this.setState({
@@ -52,6 +53,12 @@ class MyForm extends React.Component {
                 {this.state.errormessage}
                 <p>Enter your quote:</p>
                 <textarea value={this.state.quote} />
+                <p>Enter your car:</p>
+                <select value={this.state.car}>
+                    <option value="Ford">Ford</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Fiat">Fiat</option>
+                </select>
                 <p></p>
                 <input type="submit" value="Submit" />
             </form>
