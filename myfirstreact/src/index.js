@@ -8,23 +8,25 @@ class Header extends React.Component{
             favoritecolor: "red"
         };
     }
-    // static getDerivedStateFromProps(props, state){
-    //     return {
-    //         favoritecolor: props.favcol
-    //     };
-    // }
+    static getDerivedStateFromProps(props, state){
+        return {
+            favoritecolor: props.favcol
+        };
+    }
+    changeColor = () => {
+        this.setState({
+            favoritecolor: "blue"
+        });
+    }
     render(){
         return(
-            <h1>My favorite color is {this.state.favoritecolor}</h1>
+            <div>
+                <h1>My favorite color is {this.state.favoritecolor}</h1>
+                <button type="button" onClick={this.changeColor}>Change Color</button>
+            </div>
         );
     }
-    componentDidMount(){
-        setTimeout(()=>{
-            this.setState({
-                favoritecolor: "yellow"
-            });
-        }, 2000);
-    }
+   
 }
 
 const myHeader = <Header favcol="yellow" />;
