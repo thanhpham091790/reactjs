@@ -10,36 +10,41 @@
 <body>
   <div id="root"></div>
   <script>
-    class Car{
-      constructor(name){
+    // Class
+    class Car {
+      constructor(name) {
         this.brand = name;
       }
-      present(){
+      present() {
         return "I have a " + this.brand;
       }
     }
-    
-    class Model extends Car{
-      constructor(name, mod){
+    // Inheritance class
+    class Model extends Car {
+      constructor(name, mod) {
         super(name);
         this.model = mod;
       }
-      show(){
+      show() {
         return this.present() + ", it is a " + this.model;
       }
     }
-
-    hello = function(){
+    // Regular function
+    hello = function () {
       return "Hello World!";
     }
-
-    hello = () =>{
+    // Arrow function 
+    hello = () => {
       return "Hello World Arrow Function!";
+    }
+    // Arrow functions with parameters
+    hello = (val) => {
+      return "Hello " + val;
     }
 
     mycar = new Model("Camry", "2017");
     document.getElementById("root").innerHTML = mycar.show();
-    document.getElementById("root").innerHTML = hello();
+    document.getElementById("root").innerHTML = hello("Thanh H Pham");
   </script>
 </body>
 
