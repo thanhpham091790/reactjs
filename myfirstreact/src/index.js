@@ -5,10 +5,14 @@ import Car from './App.js';
 class Garage extends React.Component{
     render(){
         const brand = "Toyota";
+        const carinfo = {
+            name: "Ford",
+            model: "Mustang"
+        };
         return (
             <div>
                 <h1>Who lives in my Garage?</h1>
-                <Car brand={brand} />
+                <Car brand={carinfo} />
             </div>
         );
     }
