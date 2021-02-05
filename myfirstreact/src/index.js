@@ -4,10 +4,11 @@ import Car from './App.js';
 
 class Garage extends React.Component{
     render(){
+        const brand = "Toyota";
         return (
             <div>
                 <h1>Who lives in my Garage?</h1>
-                <Car brand="Ford" />
+                <Car brand={brand} />
             </div>
         );
     }
