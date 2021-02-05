@@ -17,4 +17,5 @@ const myelement4 = (
         <h1>I am a Header too.</h1>
     </div>
 );
-ReactDOM.render(myelement4,document.getElementById("root"));
+const myelement5 = <input type="text" />;
+ReactDOM.render(myelement5,document.getElementById("root"));
