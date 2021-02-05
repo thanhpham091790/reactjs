@@ -1,24 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-class Car extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            color: "red"
-        };
-    }
-    render(){
-        return <h2>Hi, I am a {this.props.style} car!</h2>;
-    }
-}
+import Car from './App.js';
 
 class Garage extends React.Component{
     render() {
         return (
             <div>
                 <h1>Who lives in my Garage?</h1>
-                <Car style="brand new" />
+                <Car style="good" />
             </div>
         )
     }
