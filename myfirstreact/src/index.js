@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function shoot(){
-    alert("Great shot!");
+class Football extends React.Component{
+    shoot = () => {
+        alert("A great shot!");
+    }
+    render(){
+        return(
+            <button onClick={this.shoot}>Take the shot!</button>
+        );
+    }
 }
-const myelement = (
-    <button onClick={shoot}>Take the shot!</button>
-);
-ReactDOM.render(myelement, document.getElementById("root"));
+ReactDOM.render(<Football />, document.getElementById("root"));
