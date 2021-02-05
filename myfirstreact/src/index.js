@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const myelement = (
-    <table>
-        <tr><th>Name</th></tr>
-        <tr><td>John</td></tr>
-        <tr><td>Elsa</td></tr>
-    </table>
-);
-ReactDOM.render(myelement,document.getElementById("root"));
+const myelement = <h1>I love Jsx!</h1>;
+const myelement1 = React.createElement("h1",{},"I do not use jxs!");
+ReactDOM.render(myelement1,document.getElementById("root"));
