@@ -19,6 +19,7 @@
   <p><strong>this</strong> represents:</p>
 
   <p id="demo"></p>
+  <p id="demo1"></p>
 
   <p>See the difference before and after the button is clicked.</p>
   <script>
@@ -27,15 +28,22 @@
       constructor(){
         this.color = "Red";
       }
+      // With an arrow function, this represents the object that called the function
       changeColor = function(){
         document.getElementById("demo").innerHTML += this;
+      }
+      // With an arrow function, this represents the Header object no matter who called the function
+      changeColorArrow = () => {
+        document.getElementById("demo1").innerHTML += this;
       }
     }
     myheader = new Header();
     // The window object calls the function:
     window.addEventListener("load",myheader.changeColor);
+    window.addEventListener("load",myheader.changeColorArrow);
     // A button object calls the function:
     document.getElementById("btn").addEventListener("click",myheader.changeColor);
+    document.getElementById("btn").addEventListener("click",myheader.changeColorArrow);
 
     // Class
     class Car {
