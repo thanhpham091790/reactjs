@@ -9,7 +9,7 @@ class Car extends React.Component{
         };
     }
     render(){
-        return <h2>Hi, I am a {this.state.color} car!</h2>;
+        return <h2>Hi, I am a {this.props.style} car!</h2>;
     }
 }
 
@@ -17,4 +17,4 @@ function Car1(){
     return <h2>Hi, I am a car1!</h2>;
 }
 
-ReactDOM.render(<Car />,document.getElementById("root"));
+ReactDOM.render(<Car style="beautiful" />,document.getElementById("root"));
