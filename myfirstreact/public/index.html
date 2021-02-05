@@ -29,8 +29,14 @@
       }
     }
 
+    hello = function(){
+      return "Hello World!";
+    }
+
+
     mycar = new Model("Camry", "2017");
-    document.write(mycar.show());
+    document.getElementById("root").innerHTML = mycar.show();
+    document.getElementById("root").innerHTML = hello();
   </script>
 </body>
 
