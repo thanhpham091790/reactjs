@@ -11,4 +11,10 @@ const myelement3 = (
         <li>Cherries</li>
     </ul>
 );
-ReactDOM.render(myelement3,document.getElementById("root"));
+const myelement4 = (
+    <div>
+        <h1>I am a Header</h1>
+        <h1>I am a Header too.</h1>
+    </div>
+);
+ReactDOM.render(myelement4,document.getElementById("root"));
