@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import Car from './App.js';
 
 class Garage extends React.Component{
+    constructor(props){
+        super(props);
+    }
     render(){
         const brand = "Toyota";
         const carinfo = {
