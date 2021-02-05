@@ -1,7 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Car from './App.js';
 
+class Header extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            favoritecolor: "red"
+        };
+    }
+    render(){
+        return(
+            <h1>My favorite color is {this.state.favoritecolor}</h1>
+        );
+    }
+}
 
-const mycar = <Car />;
-ReactDOM.render(mycar,document.getElementById("root"));
+const myHeader = <Header />;
+ReactDOM.render(myHeader,document.getElementById("root"));
