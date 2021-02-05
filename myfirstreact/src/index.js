@@ -4,17 +4,10 @@ import Car from './App.js';
 
 class Garage extends React.Component{
     render() {
-        return (
-            <div>
-                <h1>Who lives in my Garage?</h1>
-                <Car style="good" />
-            </div>
-        )
+        return <h2>I am a {this.props.brand} !</h2>
     }
 }
 
-function Car1(){
-    return <h2>Hi, I am a car1!</h2>;
-}
+const mycar = <Garage brand="Toyota" />;
 
-ReactDOM.render(<Garage />,document.getElementById("root"));
+ReactDOM.render(mycar,document.getElementById("root"));
