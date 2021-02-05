@@ -13,8 +13,19 @@ class Car extends React.Component{
     }
 }
 
+class Garage extends React.Component{
+    render() {
+        return (
+            <div>
+                <h1>Who lives in my Garage?</h1>
+                <Car style="brand new" />
+            </div>
+        )
+    }
+}
+
 function Car1(){
     return <h2>Hi, I am a car1!</h2>;
 }
 
-ReactDOM.render(<Car style="beautiful" />,document.getElementById("root"));
+ReactDOM.render(<Garage />,document.getElementById("root"));
