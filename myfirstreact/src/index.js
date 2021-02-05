@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var element = <p>Thanh H Pham</p>;
-ReactDOM.render(element,document.getElementById("root"));
+const myelement = (
+    <table>
+        <tr><th>Name</th></tr>
+        <tr><td>John</td></tr>
+        <tr><td>Elsa</td></tr>
+    </table>
+);
+ReactDOM.render(myelement,document.getElementById("root"));
