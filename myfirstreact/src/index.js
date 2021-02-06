@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Football extends React.Component{
-    shoot(a){
-        alert(a);
+    shoot = (a,b) => {
+        alert(b.type);
     }
     render(){
         return(
-            <button onClick={this.shoot.bind(this,"A best shot!")}>Take the shot!</button>
+            <button onClick={(ev) => this.shoot("Goal",ev)}>Take the shot!</button>
         );
     }
 }
