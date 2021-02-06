@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class MyForm extends React.Component{
-    constructor(props){
+class MyForm extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             username: "",
             age: null,
             errormessage: "",
-            description: "The content of a textarea goes in the value attribute"
+            description: "The content of a textarea goes in the value attribute",
+            mycar: "Volvo"
         }
     }
     mySubmitHandler = (event) => {
@@ -19,8 +20,8 @@ class MyForm extends React.Component{
         let nam = event.target.name;
         let val = event.target.value;
         let err = "";
-        if(nam==="age"){
-            if(!Number(val) && val != ""){
+        if (nam === "age") {
+            if (!Number(val) && val != "") {
                 err = <strong>Your age must be a number</strong>
             }
         }
@@ -29,14 +30,14 @@ class MyForm extends React.Component{
             errormessage: err
         });
     }
-    render(){
+    render() {
         let header = "";
-        if(this.state.username || this.state.age){
+        if (this.state.username || this.state.age) {
             header = <h1>Hello {this.state.username} {this.state.age}</h1>;
-        }else{
+        } else {
             header = "";
         }
-        return(
+        return (
             <form onSubmit={this.mySubmitHandler}>
                 {header}
                 <p>Enter your name:</p>
@@ -45,8 +46,14 @@ class MyForm extends React.Component{
                 <input type="text" name="age" onChange={this.myChangeHandler} /><br />
                 {this.state.errormessage}
                 <p>Enter your description:</p>
-                <textarea value={this.state.description} /><br />
-                <input type="submit" />
+                <textarea value={this.state.description} />
+                <p>Select your car:</p>
+                <select value={this.state.mycar}>
+                    <option value="Ford">Ford</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Fiat">Fiat</option>
+                </select><br />
+                <input type="submit" value="Submit" />
             </form>
         );
     }
