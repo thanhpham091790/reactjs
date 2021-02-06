@@ -5,7 +5,8 @@ class MyForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            username: ""
+            username: "",
+            age: ""
         }
     }
     mySubmitHandler = (event) => {
@@ -13,14 +14,16 @@ class MyForm extends React.Component{
         alert("You are submiting " + this.state.username);
     }
     myChangeHandler = (event) => {
+        let nam = event.target.name;
+        let val = event.target.value;
         this.setState({
-            username: event.target.value
+            [nam]: val
         });
     }
     render(){
         let header = "";
-        if(this.state.username){
-            header = <h1>Hello {this.state.username}</h1>;
+        if(this.state.username || this.state.age){
+            header = <h1>Hello {this.state.username} {this.state.age}</h1>;
         }else{
             header = "";
         }
@@ -28,7 +31,9 @@ class MyForm extends React.Component{
             <form onSubmit={this.mySubmitHandler}>
                 {header}
                 <p>Enter your name:</p>
-                <input type="text" onChange={this.myChangeHandler} />
+                <input type="text" name="username" onChange={this.myChangeHandler} />
+                <p>Enter your age:</p>
+                <input type="text" name="age" onChange={this.myChangeHandler} />
                 <input type="submit" />
             </form>
         );
