@@ -8,6 +8,10 @@ class MyForm extends React.Component{
             username: ""
         }
     }
+    mySubmitHandler = (event) => {
+        event.preventDefault();
+        alert("You are submiting " + this.state.username);
+    }
     myChangeHandler = (event) => {
         this.setState({
             username: event.target.value
@@ -21,10 +25,11 @@ class MyForm extends React.Component{
             header = "";
         }
         return(
-            <form>
+            <form onSubmit={this.mySubmitHandler}>
                 {header}
                 <p>Enter your name:</p>
                 <input type="text" onChange={this.myChangeHandler} />
+                <input type="submit" />
             </form>
         );
     }
