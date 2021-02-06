@@ -7,7 +7,8 @@ class MyForm extends React.Component{
         this.state = {
             username: "",
             age: null,
-            errormessage: ""
+            errormessage: "",
+            description: "The content of a textarea goes in the value attribute"
         }
     }
     mySubmitHandler = (event) => {
@@ -42,7 +43,9 @@ class MyForm extends React.Component{
                 <input type="text" name="username" onChange={this.myChangeHandler} />
                 <p>Enter your age:</p>
                 <input type="text" name="age" onChange={this.myChangeHandler} /><br />
-                {this.state.errormessage}<br />
+                {this.state.errormessage}
+                <p>Enter your description:</p>
+                <textarea value={this.state.description} /><br />
                 <input type="submit" />
             </form>
         );
