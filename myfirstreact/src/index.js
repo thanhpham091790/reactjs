@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Car from "./App.js"
+import "./mysass.scss"
 
 class MyHeader extends React.Component{
     render(){
