@@ -5,9 +5,12 @@ class UserInput extends Component{
         super(props);
     }
     render(){
+        const style = {
+            backgroundColor: 'yellow'
+        };
         return(
             <div className="UserInput">
-                <input type="text" value={this.props.username} onChange={this.props.changed} />
+                <input style={style} type="text" value={this.props.username} onChange={this.props.changed} />
             </div>
         );
     }
