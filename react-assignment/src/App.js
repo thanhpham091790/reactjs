@@ -4,10 +4,14 @@ import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component{
+  state = {
+    username: "thanhthuy9390"
+  };
+
   render(){
     return (
       <div className="App">
-        <UserOutput />
+        <UserOutput username={this.state.username} />
         <UserInput />
       </div>
     );
