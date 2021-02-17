@@ -7,8 +7,14 @@ class App extends Component{
   state = {
     username: "thanhthuy9390"
   };
+  
+  stateHandler = (event) => {
+    this.setState({
+      username: "thanhthuy30"
+    });
+  }
 
-  render(){
+  render(){  
     return (
       <div className="App">
         <UserOutput username={this.state.username} />
