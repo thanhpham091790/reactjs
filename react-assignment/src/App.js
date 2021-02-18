@@ -1,24 +1,38 @@
 import React, {Component} from 'react';
 import './App.css';
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
+import ValidationComponent from './ValidationComponent/ValidationComponent';
+import CharComponent from './CharComponent/CharComponent';
 
 class App extends Component{
+
   state = {
-    username: "thanhthuy9390"
+    length: 0,
+    text: ''
   };
-  
-  stateHandler = (event) => {
-    this.setState({
-      username: event.target.value
-    });
+
+  onChangeHandler = (event) => {
+    let len = event.target.value.length;
+    let txt = event.target.value;
+    
+    this.setState({length:len, text:txt});
+  }
+
+  onClickHander = (event, id) =>{
+    let txt = [...this.state.text];
+    txt.splice(id,1);
+    let newTxt = txt.join("");
+
+    this.setState({text:newTxt});
   }
 
   render(){  
+    let txtArr =  [...this.state.text];
+
     return (
       <div className="App">
-        <UserOutput username={this.state.username} />
-        <UserInput username={this.state.username} changed={this.stateHandler} />
+        <input type="text" onChange={this.onChangeHandler} value={this.state.text} />
+        <ValidationComponent  length={this.state.length} />
+        {txtArr.map((char, index)=>{return <CharComponent char={char} clicked={(event)=>this.onClickHander(event, index)} />})}
       </div>
     );
   }
