@@ -17,11 +17,12 @@ const StyleDiv = styled.div`
 `;
 
 const person = (props) => {
-    const style = {
-        '@media (min-width: 500px)': {
-            width: '500px'
-        }
-    };
+
+    // const style = {
+    //     '@media (min-width: 500px)': {
+    //         width: '300px'
+    //     }
+    // };
 
     return (
         // <div className="Person" style={style}>
