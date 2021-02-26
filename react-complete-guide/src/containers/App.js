@@ -6,7 +6,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
-  
+
   constructor(props){
     super(props);
     console.log('[App.js] constructor');
@@ -17,7 +17,8 @@ class App extends Component {
         { id: 'erere', name: "Thuy", age: 26 }
         ],
         otherState: "Some other value",
-        showPersons: false
+        showPersons: false,
+        showCockpit: true
     };
   }
 
@@ -76,18 +77,26 @@ class App extends Component {
     console.log('[App.js] render');
 
     let persons = null;
+    let cockpit = null;
     if (this.state.showPersons) {
       persons = <Persons persons={this.state.persons} 
                     clicked={this.deletePersonHandler} 
                     changed={this.nameChangeHandler}/>;
     }
-
-    return (
-      <div className={classes.App}>
-        <Cockpit title={this.props.appTitle}
+    if(this.state.showCockpit){
+      cockpit = <Cockpit title={this.props.appTitle}
                 showPersons={this.state.showPersons}
                 persons={this.state.persons} 
                 clicked={this.togglePersonsHandler} />
+    }
+
+    return (
+      <div className={classes.App}>
+
+        <button onClick={()=>{this.setState({showCockpit:false});}}>Toggle Cockpit</button>
+
+        {cockpit}
+
         {persons}
       </div>
     );
