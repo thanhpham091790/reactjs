@@ -25,6 +25,20 @@ class App extends Component {
     return state;
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    console.log('[App.js] getSnapshotBeforeUpdate');
+    return null;
+  }
+
+  componentDidUpdate(){
+    console.log('[App.js] componentDidUpdate');
+  }
+
   componentDidMount(){
     console.log('[App.js] componentDidMount');
   }
