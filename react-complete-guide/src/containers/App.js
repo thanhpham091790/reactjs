@@ -6,6 +6,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+  
   constructor(props){
     super(props);
     console.log('[App.js] constructor');

@@ -2,8 +2,7 @@ import React from 'react';
 import classes from './Cockpit.module.css';
 
 const cockpit = (props) => {
-    console.log('[Cockpit.js] rendering....');
-    
+
     let btnClass = '';
     let assignClasses = [];
 
