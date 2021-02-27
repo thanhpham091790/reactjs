@@ -3,7 +3,8 @@ import classes from './App.module.css';
 
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass.js';
+import Auxi from '../hoc/Auxi';
 
 
 class App extends Component {
@@ -92,15 +93,15 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <Auxi>
         <button onClick={()=>{this.setState({showCockpit:false});}}>Toggle Cockpit</button>
 
         {cockpit}
 
         {persons}
-      </WithClass>
+      </Auxi>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
