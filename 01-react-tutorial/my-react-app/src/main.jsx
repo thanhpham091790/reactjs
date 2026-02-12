@@ -7,10 +7,10 @@ const myTable = (
       <th>Name</th>
     </tr>
     <tr>
-      <td>John</td>
+      <td>Thanh</td>
     </tr>
     <tr>
-      <td>Elsa</td>
+      <td>Pham</td>
     </tr>
   </table>
 );
