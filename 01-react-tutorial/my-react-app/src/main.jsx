@@ -1,22 +1,22 @@
 
 import { createRoot } from 'react-dom/client'
 
-const users = [
-  { id: 1, name: 'Thanh', age: 36 },
-  { id: 2, name: 'Toan', age: 33 },
-  { id: 3, name: 'Thuy', age: 35 },
-];
+const fruitlist = ['apple', 'banana', 'cherry'];
 
-function UserList() {
+function FruitList() {
   return (
     <ul>
       {
-        users.map((user) => {
-          return <li key={user.id}>{`${user.name} is ${user.age} year old.`}</li>;
+        fruitlist.map((fruit, index, array) => {
+          return (
+            <li key={index}>
+              Name: {fruit}, Index: {index}, Array: {array}
+            </li>
+          );
         })
       }
     </ul>
   );
 }
 
-createRoot(document.getElementById('thanh')).render(<UserList />);
+createRoot(document.getElementById('thanh')).render(<FruitList />);
