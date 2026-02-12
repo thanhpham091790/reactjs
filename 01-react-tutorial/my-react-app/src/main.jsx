@@ -1,20 +1,18 @@
 
 import { createRoot } from 'react-dom/client'
 
-const myTable = (
-  <table>
-    <tr>
-      <th>Name</th>
-    </tr>
-    <tr>
-      <td>Thanh</td>
-    </tr>
-    <tr>
-      <td>Pham</td>
-    </tr>
-  </table>
-);
+const fruits = ['apple', 'banana', 'cherry'];
 
-createRoot(document.getElementById('thanh')).render(
-  myTable
-)
+function MyList() {
+  return (
+    <ul>
+      {
+        fruits.map(fruit =>
+          <li key={fruit}>{fruit}</li>
+        )
+      }
+    </ul>
+  );
+}
+
+createRoot(document.getElementById('thanh')).render(<MyList />);
