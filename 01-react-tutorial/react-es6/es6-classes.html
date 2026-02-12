@@ -19,8 +19,19 @@
             }
         }
 
-        const myCar = new Car('Toyota');
-        console.log(myCar.brand, myCar.present());
+        class Model extends Car {
+            constructor(name, mod) {
+                super(name);
+                this.model = mod;
+            }
+
+            show() {
+                return this.present() + `It is a ${this.model} model.`;;
+            }
+        }
+
+        const myCar = new Model('Toyota', 'Camry');
+        console.log(myCar.show());
     </script>
 </body>
 
