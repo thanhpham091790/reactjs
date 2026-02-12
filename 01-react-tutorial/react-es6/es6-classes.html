@@ -13,10 +13,14 @@
             constructor(name) {
                 this.brand = name;
             }
+
+            present() {
+                return `I have a ${this.brand} car.`;
+            }
         }
 
         const myCar = new Car('Toyota');
-        console.log(myCar.brand);
+        console.log(myCar.brand, myCar.present());
     </script>
 </body>
 
