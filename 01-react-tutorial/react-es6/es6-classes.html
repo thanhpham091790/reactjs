@@ -4,34 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ES6 Classes</title>
+    <title>Arrow Function</title>
 </head>
 
 <body>
+    <h1>Function</h1>
+
+    <p>This demonstrates a regular function, NOT an arrow function.</p>
+
+    <p id="demo"></p>
+
     <script>
-        class Car {
-            constructor(name) {
-                this.brand = name;
-            }
+        hello = () => 'Hello Thanh!';
 
-            present() {
-                return `I have a ${this.brand} car.`;
-            }
-        }
-
-        class Model extends Car {
-            constructor(name, mod) {
-                super(name);
-                this.model = mod;
-            }
-
-            show() {
-                return this.present() + `It is a ${this.model} model.`;;
-            }
-        }
-
-        const myCar = new Model('Toyota', 'Camry');
-        console.log(myCar.show());
+        document.querySelector('#demo').innerHTML = hello();
     </script>
 </body>
 
