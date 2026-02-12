@@ -25,9 +25,7 @@
             constructor() {
                 this.color = 'Red';
             }
-            changeColor = function () {
-                document.querySelector('#demo').innerHTML += this;
-            }
+            changeColor = () => document.querySelector('#demo').innerHTML += this;
         }
 
         const myHeader = new Header();
