@@ -12,17 +12,15 @@
     <p id="demo"></p>
 
     <script>
-        function dateInfo(date) {
-            const d = date.getDate();
-            const m = date.getMonth() + 1;
-            const y = date.getFullYear();
+        const person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 50
+        };
 
-            return [d, m, y];
-        }
+        let { firstName, lastName, age } = person;
 
-        const [date, month, year] = dateInfo(new Date());
-
-        document.querySelector('#demo').innerHTML = `The year is ${year}`;
+        document.querySelector('#demo').innerHTML = `Hello! My name is ${firstName} ${lastName}.`;
     </script>
 </body>
 
