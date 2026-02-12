@@ -8,33 +8,13 @@
 </head>
 
 <body>
-    <h1>Regular Function</h1>
-
-    <p>The <strong>this</strong> keyword represents different objects depending on how the function was called.</p>
-
-    <button id="btn">Click Me!</button>
-
-    <p><strong>this</strong> represents:</p>
 
     <p id="demo"></p>
 
-    <p>See the difference before and after the button is clicked.</p>
-
     <script>
-        class Header {
-            constructor() {
-                this.color = 'Red';
-            }
-            changeColor = () => document.querySelector('#demo').innerHTML += this;
-        }
-
-        const myHeader = new Header();
-
-        // The window object calls the function
-        window.addEventListener('load', myHeader.changeColor);
-
-        // A button object calls the function
-        document.querySelector('#btn').addEventListener('click', myHeader.changeColor);
+        const numbers = [1, 2, 3, 4];
+        const doubled = numbers.map(number => number * 2);
+        document.querySelector('#demo').innerHTML = doubled;
     </script>
 </body>
 
