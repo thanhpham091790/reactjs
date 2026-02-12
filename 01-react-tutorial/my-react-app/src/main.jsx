@@ -15,6 +15,6 @@ const myTable = (
   </table>
 );
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('thanh')).render(
   myTable
 )
