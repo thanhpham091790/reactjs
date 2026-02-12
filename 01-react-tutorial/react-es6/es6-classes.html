@@ -15,12 +15,16 @@
         const person = {
             firstName: "John",
             lastName: "Doe",
-            age: 50
+            age: 50,
+            car: {
+                brand: 'Ford',
+                model: 'Mustang',
+            }
         };
 
-        let { firstName, lastName, age } = person;
+        let { firstName, car: { brand, model } } = person;
 
-        document.querySelector('#demo').innerHTML = `Hello! My name is ${firstName} ${lastName}.`;
+        document.querySelector('#demo').innerHTML = `Hello! My name is ${firstName}. I drive a ${brand} ${model} car.`;
     </script>
 </body>
 
