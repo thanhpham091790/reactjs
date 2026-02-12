@@ -12,11 +12,17 @@
     <p id="demo"></p>
 
     <script>
-        const vehicles = ['mustang', 'f-150', 'expedition'];
+        function dateInfo(date) {
+            const d = date.getDate();
+            const m = date.getMonth() + 1;
+            const y = date.getFullYear();
 
-        const [car, truck, suv] = vehicles;
+            return [d, m, y];
+        }
 
-        document.querySelector('#demo').innerHTML = car;
+        const [date, month, year] = dateInfo(new Date());
+
+        document.querySelector('#demo').innerHTML = `The year is ${year}`;
     </script>
 </body>
 
