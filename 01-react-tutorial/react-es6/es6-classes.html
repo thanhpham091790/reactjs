@@ -15,9 +15,9 @@
     <p id="demo"></p>
 
     <script>
-        hello = () => 'Hello Thanh!';
+        hello = name => `Hello! My name is ${name}`;
 
-        document.querySelector('#demo').innerHTML = hello();
+        document.querySelector('#demo').innerHTML = hello('Toan');
     </script>
 </body>
 
