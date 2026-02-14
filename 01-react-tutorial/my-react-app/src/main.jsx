@@ -1,10 +1,15 @@
 
+import { useState } from 'react';
 import { createRoot } from 'react-dom/client'
 
-function Greeting({ name, age }) {
+function Counter() {
+  const [count, setCount] = useState(0);
+
   return (
-    <h1>Hello, {name}! You are {age} years old. </h1>
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
   );
 }
 
-createRoot(document.getElementById('thanh')).render(<Greeting name='Thanh' age={36} />);
+createRoot(document.getElementById('thanh')).render(<Counter />);
