@@ -10,9 +10,19 @@
 <body>
 
     <script>
-        const numbers = [1, 2, 3, 4, 5, 6];
-        const [first, second, ...rest] = numbers;
-        console.log(first, second, rest);
+        const car = {
+            brand: 'Ford',
+            model: 'Mustang',
+            color: 'red'
+        }
+
+        const car_more = {
+            type: 'car',
+            year: 2021,
+            color: 'yellow'
+        }
+        const myCar = { ...car, ...car_more };
+        console.log(myCar);
     </script>
 </body>
 
