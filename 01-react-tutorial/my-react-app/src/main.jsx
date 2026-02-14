@@ -1,22 +1,10 @@
 
 import { createRoot } from 'react-dom/client'
 
-const fruitlist = ['apple', 'banana', 'cherry'];
-
-function FruitList() {
+function Greeting({ name, age }) {
   return (
-    <ul>
-      {
-        fruitlist.map((fruit, index, array) => {
-          return (
-            <li key={index}>
-              Name: {fruit}, Index: {index}, Array: {array}
-            </li>
-          );
-        })
-      }
-    </ul>
+    <h1>Hello, {name}! You are {age} years old. </h1>
   );
 }
 
-createRoot(document.getElementById('thanh')).render(<FruitList />);
+createRoot(document.getElementById('thanh')).render(<Greeting name='Thanh' age={36} />);
