@@ -8,20 +8,19 @@
 </head>
 
 <body>
-    <h1 id="demo"></h1>
+    <h1>Example</h1>
+
+    <p>Without using template strings:</p>
+
+    <div id="demo"></div>
 
     <script>
-        let authenticated = true;
+        const name = 'Thanh';
+        const age = 30;
+        const message = `Hello! ${name}!
+        You are ${age} years old.`;
 
-        authenticated ? renderApp() : renderLogin();
-
-        function renderApp() {
-            document.querySelector('#demo').innerHTML = 'Welcome!';
-        }
-
-        function renderLogin() {
-            document.querySelector('#demo').innerHTML = 'Please log in!';
-        }
+        document.querySelector('#demo').innerHTML = message;
     </script>
 </body>
 
