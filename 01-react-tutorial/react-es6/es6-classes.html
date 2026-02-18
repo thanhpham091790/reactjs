@@ -16,13 +16,10 @@
 
 
     <script>
-        const items = ["apple", "banana", "orange"];
-        const list =
-            `You have ${items.length} items:
-            ${items.map(item => item).join(' | ')}
-        `;
+        const isAdmin = true;
+        const message = `Status: ${isAdmin ? 'Admin' : 'User'}`;
 
-        document.querySelector('#demo').innerHTML = list;
+        document.querySelector('#demo').innerHTML = message;
     </script>
 </body>
 
