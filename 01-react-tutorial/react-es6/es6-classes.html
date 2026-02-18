@@ -15,12 +15,14 @@
     <div id="demo"></div>
 
     <script>
-        const name = 'Thanh';
-        const age = 30;
-        const message = `Hello! ${name}!
-        You are ${age} years old.`;
+        const html = `
+            <div>
+                <h1>Title</h1>
+                <p>Paragraph</p>
+            </div>
+        `;
 
-        document.querySelector('#demo').innerHTML = message;
+        document.querySelector('#demo').innerHTML = html;
     </script>
 </body>
 
