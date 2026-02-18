@@ -11,12 +11,9 @@
     <h1 id="demo"></h1>
 
     <script>
-        let authenticated = false;
-        if (authenticated) {
-            renderApp();
-        } else {
-            renderLogin();
-        }
+        let authenticated = true;
+
+        authenticated ? renderApp() : renderLogin();
 
         function renderApp() {
             document.querySelector('#demo').innerHTML = 'Welcome!';
