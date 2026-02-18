@@ -10,16 +10,19 @@
 <body>
     <h1>Example</h1>
 
-    <p>Without using template strings:</p>
+    <p>You can use the Array.map() function inside a template string:</p>
 
-    <pre id="demo"></pre>
+    <div id="demo"></div>
+
 
     <script>
-        const price = 10;
-        const quantity = 5;
-        let total = `Total: $${price * quantity}`;
+        const items = ["apple", "banana", "orange"];
+        const list =
+            `You have ${items.length} items:
+            ${items.map(item => item).join(' | ')}
+        `;
 
-        document.querySelector('#demo').innerHTML = total;
+        document.querySelector('#demo').innerHTML = list;
     </script>
 </body>
 
