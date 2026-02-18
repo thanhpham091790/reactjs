@@ -8,21 +8,23 @@
 </head>
 
 <body>
+    <h1 id="demo"></h1>
 
     <script>
-        const car = {
-            brand: 'Ford',
-            model: 'Mustang',
-            color: 'red'
+        let authenticated = false;
+        if (authenticated) {
+            renderApp();
+        } else {
+            renderLogin();
         }
 
-        const car_more = {
-            type: 'car',
-            year: 2021,
-            color: 'yellow'
+        function renderApp() {
+            document.querySelector('#demo').innerHTML = 'Welcome!';
         }
-        const myCar = { ...car, ...car_more };
-        console.log(myCar);
+
+        function renderLogin() {
+            document.querySelector('#demo').innerHTML = 'Please log in!';
+        }
     </script>
 </body>
 
