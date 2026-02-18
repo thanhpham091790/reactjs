@@ -12,17 +12,14 @@
 
     <p>Without using template strings:</p>
 
-    <div id="demo"></div>
+    <pre id="demo"></pre>
 
     <script>
-        const html = `
-            <div>
-                <h1>Title</h1>
-                <p>Paragraph</p>
-            </div>
-        `;
+        const price = 10;
+        const quantity = 5;
+        let total = `Total: $${price * quantity}`;
 
-        document.querySelector('#demo').innerHTML = html;
+        document.querySelector('#demo').innerHTML = total;
     </script>
 </body>
 
