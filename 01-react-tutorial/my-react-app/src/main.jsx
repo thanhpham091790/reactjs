@@ -1,11 +1,15 @@
 
 import { createRoot } from 'react-dom/client'
 
-const myElement = (
-  <>
-    <p>I am a paragraph.</p>
-    <p>I am a paragraph too.</p>
-  </>
-);
+function Car() {
+  const brand = 'Toyota';
+  const model = 'Camry';
 
-createRoot(document.getElementById('root')).render(myElement);
+  return (
+    <>
+      <h2>My car is {brand} {model}.</h2>
+    </>
+  );
+}
+
+createRoot(document.getElementById('root')).render(<Car />);
