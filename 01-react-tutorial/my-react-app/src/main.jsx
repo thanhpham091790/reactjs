@@ -4,6 +4,10 @@ import { createRoot } from 'react-dom/client'
 function Car() {
 
   const className = 'greeting';
+  const style = {
+    color: 'red',
+    fontSize: '20px'
+  };
 
   function onClickHandler() {
     alert('Hello, Thanh Pham!');
@@ -11,7 +15,7 @@ function Car() {
 
   return (
     <>
-      <h2 className={className} onClick={onClickHandler}>Hello world!</h2>
+      <h2 className={className} onClick={onClickHandler} style={style}>Hello world!</h2>
     </>
   );
 }
