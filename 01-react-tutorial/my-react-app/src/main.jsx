@@ -26,4 +26,13 @@ function Car(props) {
   );
 }
 
-createRoot(document.getElementById('root')).render(<Car color='yellow' />);
+function Garage() {
+  return (
+    <>
+      <h1>Who live in garage ?</h1>
+      <Car color='Salmon' />
+    </>
+  );
+}
+
+createRoot(document.getElementById('root')).render(<Garage ></Garage>);
