@@ -2,8 +2,11 @@
 import { createRoot } from 'react-dom/client'
 
 function Car() {
-  const brand = 'Toyota';
-  const model = 'Camry';
+  const myobj = {
+    name: 'Toyota',
+    model: 'Camry',
+    color: 'Silver'
+  }
 
   function kwtohp(kw) {
     return kw * 1.36;
@@ -11,7 +14,7 @@ function Car() {
 
   return (
     <>
-      <h2>My car is {brand} {model}. It has {kwtohp(218)} horsepower.</h2>
+      <h2>My car is {myobj.name} {myobj.model}. It has {kwtohp(218)} horsepower.</h2>
     </>
   );
 }
