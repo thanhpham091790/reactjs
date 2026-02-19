@@ -4,19 +4,14 @@ import { createRoot } from 'react-dom/client'
 function Car() {
 
   const className = 'greeting';
-  const x = 6;
-  let style;
-
-  if (x > 5) {
-    style = {
-      color: 'red',
-      fontSize: '20px'
-    };
-  } else {
-    style = {
-      color: 'blue',
-      fontSize: '40px'
-    }
+  const x = 4;
+  const style1 = {
+    color: 'red',
+    fontSize: '20px'
+  };
+  const style2 = {
+    color: 'blue',
+    fontSize: '40px'
   }
 
 
@@ -26,7 +21,7 @@ function Car() {
 
   return (
     <>
-      <h2 className={className} onClick={onClickHandler} style={style}>Hello world!</h2>
+      <h2 className={className} onClick={onClickHandler} style={x > 5 ? style1 : style2}>Hello world!</h2>
     </>
   );
 }
