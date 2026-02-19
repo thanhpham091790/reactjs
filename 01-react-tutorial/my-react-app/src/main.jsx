@@ -1,15 +1,6 @@
 
-import { useState } from 'react';
 import { createRoot } from 'react-dom/client'
 
-function Counter() {
-  const [count, setCount] = useState(0);
+const myElement = <h1>Pham Hong Thanh</h1>
 
-  return (
-    <button onClick={() => setCount(count + 1)}>
-      Count: {count}
-    </button>
-  );
-}
-
-createRoot(document.getElementById('thanh')).render(<Counter />);
+createRoot(document.getElementById('root')).render(myElement);
