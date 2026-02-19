@@ -1,7 +1,7 @@
 
 import { createRoot } from 'react-dom/client'
 
-function Car() {
+function Car(props) {
 
   const className = 'greeting';
   const x = 4;
@@ -10,7 +10,7 @@ function Car() {
     fontSize: '20px'
   };
   const style2 = {
-    color: 'blue',
+    color: props.color,
     fontSize: '40px'
   }
 
@@ -26,4 +26,4 @@ function Car() {
   );
 }
 
-createRoot(document.getElementById('root')).render(<Car />);
+createRoot(document.getElementById('root')).render(<Car color='yellow' />);
