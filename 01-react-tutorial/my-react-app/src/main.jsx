@@ -21,7 +21,7 @@ function Car(props) {
 
   return (
     <>
-      <h2 className={className} onClick={onClickHandler} style={x > 5 ? style1 : style2}>Hello world!</h2>
+      <h2 className={className} onClick={onClickHandler} style={x > 5 ? style1 : style2}>Hello world! I'm a {props.name}</h2>
     </>
   );
 }
@@ -30,7 +30,8 @@ function Garage() {
   return (
     <>
       <h1>Who live in garage ?</h1>
-      <Car color='Salmon' />
+      <Car color='salmon' name='Toyota' />
+      <Car color='green' name='Honda' />
     </>
   );
 }
