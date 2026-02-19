@@ -5,9 +5,13 @@ function Car() {
 
   const className = 'greeting';
 
+  function onClickHandler() {
+    alert('Hello, Thanh Pham!');
+  }
+
   return (
     <>
-      <h2 className={className}>Hello world!</h2>
+      <h2 className={className} onClick={onClickHandler}>Hello world!</h2>
     </>
   );
 }
