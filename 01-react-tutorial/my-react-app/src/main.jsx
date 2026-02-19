@@ -5,9 +5,13 @@ function Car() {
   const brand = 'Toyota';
   const model = 'Camry';
 
+  function kwtohp(kw) {
+    return kw * 1.36;
+  }
+
   return (
     <>
-      <h2>My car is {brand} {model}. It has {218 * 1.36} horsepower.</h2>
+      <h2>My car is {brand} {model}. It has {kwtohp(218)} horsepower.</h2>
     </>
   );
 }
