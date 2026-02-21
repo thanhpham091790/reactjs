@@ -1,8 +1,9 @@
 function Car(props) {
-    console.log(props);
+    let { carinfo } = props;
+    let { brand, color, mile, model } = carinfo;
     return (
         <>
-            <h2>In {props.years[0]} and {props.years[1]}, I bought a {props.carinfo.name} {props.carinfo.model} car.</h2>
+            <h1>Hello my name is Thanh Pham. I drive a {color} {brand} {model}, and it's {mile} miles.</h1>
         </>
     );
 }

@@ -2,12 +2,17 @@
 import Car from './Car';
 
 function Garage() {
-    let years = [2017, 2027];
-    let carinfo = { name: 'Toyota', model: 'Camry' };
+    let carinfo = {
+        brand: 'Toyota',
+        color: 'Silver',
+        mile: '70K',
+        model: 'Camry'
+    };
+
     return (
         <>
             <h1>Who live in garage ?</h1>
-            <Car years={years} carinfo={carinfo} />
+            <Car carinfo={carinfo} />
         </>
     );
 }
