@@ -1,24 +1,8 @@
 function Car(props) {
-
-    const className = 'greeting';
-    const x = 4;
-    const style1 = {
-        color: 'red',
-        fontSize: '20px'
-    };
-    const style2 = {
-        color: props.color,
-        fontSize: '40px'
-    }
-
-
-    function onClickHandler() {
-        alert('Hello, Thanh Pham!');
-    }
-
+    console.log(props);
     return (
         <>
-            <h2 className={className} onClick={onClickHandler} style={x > 5 ? style1 : style2}>Hello world! I'm a {props.name}</h2>
+            <h2>In {props.years[0]} and {props.years[1]}, I bought a {props.carinfo.name} {props.carinfo.model} car.</h2>
         </>
     );
 }
