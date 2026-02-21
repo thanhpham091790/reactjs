@@ -1,5 +1,6 @@
 
 import Car from './Car';
+import Football from './Football';
 
 function Garage() {
     let carinfo = { model: "Camry", year: 2017 };
@@ -8,6 +9,7 @@ function Garage() {
         <>
             <h1>Who live in garage ?</h1>
             <Car carinfo={carinfo}>Toyota</Car>
+            <Football />
         </>
     );
 }
