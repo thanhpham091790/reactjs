@@ -2,12 +2,7 @@
 import Car from './Car';
 
 function Garage() {
-    let carinfo = {
-        brand: 'Toyota',
-        color: 'Silver',
-        mile: '70K',
-        model: 'Camry'
-    };
+    let carinfo = ['Toyota', 'Rav4', '80k', 'Black'];
 
     return (
         <>
