@@ -1,9 +1,9 @@
 function Car(props) {
     let { carinfo } = props;
-    let [brand, model, mile, color] = carinfo;
+    let { model, ...rest } = carinfo;
     return (
         <>
-            <h1>Hello my name is Thanh Pham. I drive a {color} {brand} {model}, and it's {mile} miles.</h1>
+            <h1>Hello my name is Thanh Pham. I drive a {model} car, and it has made since {rest.year}.</h1>
         </>
     );
 }

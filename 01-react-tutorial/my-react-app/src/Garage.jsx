@@ -2,7 +2,7 @@
 import Car from './Car';
 
 function Garage() {
-    let carinfo = ['Toyota', 'Rav4', '80k', 'Black'];
+    let carinfo = { model: "Mustang", year: 1969 };
 
     return (
         <>
