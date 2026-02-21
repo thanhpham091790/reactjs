@@ -1,12 +1,12 @@
 function Football() {
 
-    function shoot() {
-        alert('Great shot!');
+    function shoot(x) {
+        alert(x);
     }
 
     return (
         <>
-            <button type="button" onClick={shoot}>Take the shoot</button>
+            <button type="button" onClick={() => shoot('Goal!')}>Take the shoot</button>
         </>
     );
 }
