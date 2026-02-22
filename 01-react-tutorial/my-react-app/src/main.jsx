@@ -1,6 +1,6 @@
 
 import { createRoot } from 'react-dom/client'
-import Goal from './Goal';
+import Car from './Car';
 
 
-createRoot(document.getElementById('root')).render(<Goal isGoal={false} />);
+createRoot(document.getElementById('root')).render(<Car brand='Toyota' />);
