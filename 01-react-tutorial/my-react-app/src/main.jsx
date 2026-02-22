@@ -1,6 +1,6 @@
 
 import { createRoot } from 'react-dom/client'
-import Garage from './Garage';
+import Goal from './Goal';
 
 
-createRoot(document.getElementById('root')).render(<Garage />);
+createRoot(document.getElementById('root')).render(<Goal isGoal={false} />);
