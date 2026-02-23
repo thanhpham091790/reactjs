@@ -1,5 +1,5 @@
 
 import { createRoot } from 'react-dom/client'
-import Car from './Car';
+import MyForm from './MyForm';
 
-createRoot(document.getElementById('root')).render(<Car />);
+createRoot(document.getElementById('root')).render(<MyForm />);
