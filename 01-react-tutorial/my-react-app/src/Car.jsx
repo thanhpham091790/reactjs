@@ -1,8 +1,13 @@
-function Car(props) {
+function Car() {
+
+    const cars = ['Ford', 'BMW', 'Audi'];
 
     return (
         <>
-            {props.brand && <h1>My car is {props.brand}!</h1>}
+            <h1>My Cars:</h1>
+            <ul>
+                {cars.map(car => <li key={car}>I'm a {car}</li>)}
+            </ul>
         </>
     );
 }
