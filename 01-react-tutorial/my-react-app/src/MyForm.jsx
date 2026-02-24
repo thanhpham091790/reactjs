@@ -8,8 +8,13 @@ function MyForm() {
         setName(event.target.value);
     }
 
+    function submitHandler(event) {
+        event.preventDefault();
+        alert(name);
+    }
+
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <label htmlFor="name">Enter your name:</label>
             <input
                 type="text"
@@ -17,7 +22,7 @@ function MyForm() {
                 value={name}
                 onChange={changeHandler}
             />
-            <p>Current value: {name}</p>
+            <input type="submit" />
         </form>
     );
 }
