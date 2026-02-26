@@ -3,7 +3,11 @@ import { useState } from "react";
 
 function MyForm() {
 
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        name: 'Toan Pham',
+        car: 'Volvo',
+        comment: 'I love Toyota.'
+    });
 
     function changeHandler(event) {
         const name = event.target.name;
