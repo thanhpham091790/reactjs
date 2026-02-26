@@ -2,20 +2,18 @@
 import { useState } from "react";
 
 function MyForm() {
-    const [name, setName] = useState('');
-    const [comment, setComment] = useState('');
 
-    function changeNameHandler(event) {
-        setName(event.target.value);
-    }
+    const [inputs, setInputs] = useState({});
 
-    function changeCommentHandler(event) {
-        setComment(event.target.value);
+    function changeHandler(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(prevInputs => ({ ...prevInputs, [name]: value }));
     }
 
     function submitHandler(event) {
         event.preventDefault();
-        console.log(name, comment);
+        console.log(inputs);
     }
 
     return (
@@ -25,16 +23,26 @@ function MyForm() {
                 <input
                     type="text"
                     id="name"
-                    value={name}
-                    onChange={changeNameHandler}
+                    name="name"
+                    value={inputs.name}
+                    onChange={changeHandler}
                 />
+            </div>
+            <div>
+                <label htmlFor="car">Choose your car:</label>
+                <select id="car" name="car" value={inputs.car} onChange={changeHandler}>
+                    <option value="Ford">Ford</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Fiat">Fiat</option>
+                </select>
             </div>
             <div>
                 <label htmlFor="comment">Write here:</label>
                 <textarea
                     id="comment"
-                    value={comment}
-                    onChange={changeCommentHandler}
+                    name="comment"
+                    value={inputs.comment}
+                    onChange={changeHandler}
                 />
             </div>
             <div>
