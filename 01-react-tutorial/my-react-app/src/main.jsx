@@ -1,5 +1,6 @@
 
 import { createRoot } from 'react-dom/client'
-import MyForm from './MyForm';
+import MyApp from './MyApp';
 
-createRoot(document.getElementById('root')).render(<MyForm />);
+
+createRoot(document.getElementById('root')).render(<MyApp />);
