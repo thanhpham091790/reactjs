@@ -8,8 +8,9 @@ function MyApp() {
         setIsOpen(true);
     }
 
-    function closeModal() {
-        setIsOpen(false);
+    function closeModal(event) {
+        if (event.target.id === 'modal' || event.target.id === 'closeBtn')
+            setIsOpen(false);
     }
 
     return (

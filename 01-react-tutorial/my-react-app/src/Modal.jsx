@@ -7,6 +7,7 @@ function Modal(props) {
     return (
         isOpen ? createPortal(
             <div
+                onClick={onClose}
                 id='modal'
                 style={{
                     position: 'fixed',
@@ -21,6 +22,7 @@ function Modal(props) {
                 }}
             >
                 <div
+                    id='modal-content'
                     style={{
                         background: 'white',
                         padding: '20px',
@@ -28,7 +30,7 @@ function Modal(props) {
                     }}
                 >
                     {children}
-                    <button type='button' onClick={onClose}>Close</button>
+                    <button type='button' id='closeBtn' onClick={onClose}>Close</button>
                 </div>
             </div>,
             document.body
