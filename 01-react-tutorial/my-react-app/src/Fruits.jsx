@@ -1,21 +1,5 @@
-function fetchFruitData() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(['Apple', 'Banana', 'Cherry']);
-        }, 2000);
-    });
-}
-
-let fruitResource = {
-    data: null,
-    read() {
-        if (this.data !== null) return this.data;
-        throw fetchFruitData().then(result => this.data = result);
-    }
-};
-
 function Fruits() {
-    const fruits = fruitResource.read();
+    const fruits = ['Cherry', 'Apple', 'Banana'];
     return (
         <>
             <h2>My Favorite Fruits</h2>

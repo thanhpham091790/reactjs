@@ -1,6 +1,6 @@
 
-import Fruits from "./Fruits";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
+const Fruits = lazy(() => import('./Fruits'));
 
 function App() {
   return (
