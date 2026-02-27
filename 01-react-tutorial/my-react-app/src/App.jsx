@@ -1,7 +1,13 @@
+
+import Fruits from "./Fruits";
+import { Suspense } from "react";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Fruits />
+      </Suspense>
     </div>
   );
 }
