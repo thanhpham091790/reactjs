@@ -1,58 +1,26 @@
-
-
-import './App.css';
-import buttonStyles from './Button.module.css';
-import headerStyles from './BlueHeader.module.css';
-import styled from 'styled-components';
-import { Suspense, lazy } from "react";
-const Header = lazy(() => import('./Header'));
-const Content = lazy(() => import('./Content'));
-const SideBar = lazy(() => import('./SideBar'));
-const Footer = lazy(() => import('./Footer'));
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
 
 
 function App() {
 
-  const MyHeader = styled.h1`
-    padding: 10px 20px;
-    background-color: salmon;
-    color: white;
-  `;
-
-  const Button = styled.button`
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-  `;
-
-  const PrimaryButton = styled(Button)`
-    background-color: #007bff;
-  `;
-
-  const SuccessButton = styled(Button)`
-    background-color: #28a745;
-  `;
-
   return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <PrimaryButton>Primary</PrimaryButton>
-        <SuccessButton>Success</SuccessButton>
-        <MyHeader>Welcome!</MyHeader>
-        <h1 className='myheader'>My Header</h1>
-        <p className={headerStyles.myparagraph}>My Paragraph</p>
-        <Header />
-        <div>
-          <SideBar />
-          <Content />
-          <button type='button' className={`${buttonStyles.primary}`}>Primary Button</button>
-          <button type='button' className={`${buttonStyles.secondary}`}>Secondary Button</button>
-        </div>
-        <Footer />
-      </Suspense>
-    </div>
+    <BrowserRouter>
+      {/* Navigation */}
+      <nav>
+        <Link to='/'>Home</Link> |{" "}
+        <Link to='/about'>About</Link> |{" "}
+        <Link to='/contact'>Contact</Link>
+      </nav>
+      {/* Routes */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
+    </BrowserRouter >
   );
 }
 
