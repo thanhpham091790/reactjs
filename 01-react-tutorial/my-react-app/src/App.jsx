@@ -1,4 +1,6 @@
 
+
+import './App.css';
 import { Suspense, lazy } from "react";
 const Header = lazy(() => import('./Header'));
 const Content = lazy(() => import('./Content'));
@@ -10,12 +12,7 @@ function App() {
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         <Header />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}>
+        <div>
           <SideBar />
           <Content />
         </div>
