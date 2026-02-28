@@ -10,11 +10,12 @@ function App() {
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         <Header />
-        <div style={{
-          display: "flex",
-          justifyContent: 'space-around',
-          alignItems: 'center',
-        }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
           <SideBar />
           <Content />
         </div>
