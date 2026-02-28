@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
@@ -9,14 +9,23 @@ import CarProducts from './CarProducts';
 
 function App() {
 
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      color: isActive ? '#007bff' : '#333',
+      textDecoration: isActive ? 'none' : 'underline',
+      fontWeight: isActive ? 'bold' : 'normal',
+      padding: '5px 10px'
+    };
+  };
+
   return (
     <BrowserRouter>
       {/* Navigation */}
       <nav>
-        <Link to='/'>Home</Link> |{" "}
-        <Link to='/about'>About</Link> |{" "}
-        <Link to='/contact'>Contact</Link> |{" "}
-        <Link to='./products'>Products</Link>
+        <NavLink style={navLinkStyles} to='/'>Home</NavLink> |{" "}
+        <NavLink style={navLinkStyles} to='/about'>About</NavLink> |{" "}
+        <NavLink style={navLinkStyles} to='/contact'>Contact</NavLink> |{" "}
+        <NavLink style={navLinkStyles} to='./products'>Products</NavLink>
       </nav>
       {/* Routes */}
       <Routes>
