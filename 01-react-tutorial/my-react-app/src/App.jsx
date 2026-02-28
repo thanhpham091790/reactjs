@@ -15,6 +15,7 @@ function App() {
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         <h1 className='myheader'>My Header</h1>
+        <p className={headerStyles.myparagraph}>My Paragraph</p>
         <Header />
         <div>
           <SideBar />
