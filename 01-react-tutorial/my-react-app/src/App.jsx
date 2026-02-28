@@ -5,6 +5,7 @@ import Contact from "./Contact";
 import Products from './Products';
 import BikeProducts from './BikeProducts';
 import CarProducts from './CarProducts';
+import Info from './Info';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         <NavLink style={navLinkStyles} to='/about'>About</NavLink> |{" "}
         <NavLink style={navLinkStyles} to='/contact'>Contact</NavLink> |{" "}
         <NavLink style={navLinkStyles} to='./products'>Products</NavLink>
+        <NavLink style={navLinkStyles} to='./customer/Thanh'>Thanh</NavLink>
+        <NavLink style={navLinkStyles} to='./customer/Toan'>Toan</NavLink>
       </nav>
       {/* Routes */}
       <Routes>
@@ -36,6 +39,7 @@ function App() {
           <Route path='car' element={<CarProducts />} />
           <Route path='bike' element={<BikeProducts />} />
         </Route>
+        <Route path='/customer/:firstname' element={<Info />} />
       </Routes>
     </BrowserRouter >
   );
