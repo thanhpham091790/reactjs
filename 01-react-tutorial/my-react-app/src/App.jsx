@@ -17,8 +17,8 @@ function App() {
         <div>
           <SideBar />
           <Content />
-          <button type='button' className={`${buttonStyles.mybutton} ${buttonStyles.primary}`}>Primary Button</button>
-          <button type='button' className={`${buttonStyles.mybutton} ${buttonStyles.secondary}`}>Secondary Button</button>
+          <button type='button' className={`${buttonStyles.primary}`}>Primary Button</button>
+          <button type='button' className={`${buttonStyles.secondary}`}>Secondary Button</button>
         </div>
         <Footer />
       </Suspense>
