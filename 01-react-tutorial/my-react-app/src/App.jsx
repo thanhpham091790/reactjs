@@ -23,15 +23,23 @@ function App() {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    background-color: ${props => props.btntype === 'primary' ? '#007bff' : '#6c757d'};
     color: white;
     cursor: pointer;
+  `;
+
+  const PrimaryButton = styled(Button)`
+    background-color: #007bff;
+  `;
+
+  const SuccessButton = styled(Button)`
+    background-color: #28a745;
   `;
 
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <Button btntype='primary'>Primary Button</Button>
+        <PrimaryButton>Primary</PrimaryButton>
+        <SuccessButton>Success</SuccessButton>
         <MyHeader>Welcome!</MyHeader>
         <h1 className='myheader'>My Header</h1>
         <p className={headerStyles.myparagraph}>My Paragraph</p>
