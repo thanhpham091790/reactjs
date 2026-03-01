@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import MyInput from "./MyInput";
+
 function App() {
   const inputRef = useRef();
 
@@ -8,7 +10,7 @@ function App() {
 
   return (
     <div>
-      <input type="text" ref={inputRef} placeholder="Type here..." />
+      <MyInput ref={inputRef} placeholder='Type here...' />
       <button type="button" onClick={focusInput}>Focus Input</button>
     </div>
   );
