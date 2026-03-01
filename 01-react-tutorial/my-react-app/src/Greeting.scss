@@ -1,5 +1,14 @@
-$color: red;
+@use 'sass:color';
+$myColor: red;
 
 h1 {
-    color: $color;
+    color: $myColor;
+}
+
+h2 {
+    color: color.adjust($myColor, $lightness: -20%);
+}
+
+h3 {
+    color: color.adjust($myColor, $lightness: 20%);
 }
