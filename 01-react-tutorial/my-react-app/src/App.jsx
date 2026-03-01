@@ -1,17 +1,13 @@
-import { useRef } from "react";
-import MyInput from "./MyInput";
 
+import Greeting from "./Greeting";
+import WithBorder from "./assets/WithBorder";
 function App() {
-  const inputRef = useRef();
-
-  function focusInput() {
-    inputRef.current.focus();
-  }
+  const GreetingWithBorder = WithBorder(Greeting);
 
   return (
     <div>
-      <MyInput ref={inputRef} placeholder='Type here...' />
-      <button type="button" onClick={focusInput}>Focus Input</button>
+      <Greeting name='Toan' />
+      <GreetingWithBorder name='Thanh' />
     </div>
   );
 }
