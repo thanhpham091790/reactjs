@@ -1,6 +1,8 @@
 
 import Greeting from "./Greeting";
-import WithBorder from "./assets/WithBorder";
+import WithBorder from "./WithBorder";
+import './Greeting.scss';
+
 function App() {
   const GreetingWithBorder = WithBorder(Greeting);
 
