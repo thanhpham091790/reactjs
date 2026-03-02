@@ -9,7 +9,7 @@ function App() {
     setTimeout(() => {
       setCount(prevCount => prevCount + 1);
     }, 1000);
-  });
+  }, []);
 
   return (
     <>
