@@ -1,23 +1,19 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [car, setCar] = useState({
-    brand: 'Toyota',
-    model: 'Camry',
-    year: '2017',
-    color: 'Silver'
-  });
 
-  function changeColor(newColor) {
-    setCar(prevCar => ({ ...prevCar, color: newColor }));
-  }
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount(prevCount => prevCount + 1);
+    }, 1000);
+  });
 
   return (
     <>
-      <h1>My {car.brand}</h1>
-      <p>It is a {car.color} {car.model} from {car.year}.</p>
-      <button type="button" onClick={() => changeColor('Blue')}>Blue</button>
+      <h1>I've rendered {count} times!</h1>
     </>
   );
 }
