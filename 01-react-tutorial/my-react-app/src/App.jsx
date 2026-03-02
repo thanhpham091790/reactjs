@@ -1,19 +1,18 @@
 
-import Greeting from "./Greeting";
-import WithBorder from "./WithBorder";
-import './Greeting.scss';
+import { useState } from "react";
 
 function App() {
-  const GreetingWithBorder = WithBorder(Greeting);
+  const [color, setColor] = useState('red');
+
+  function changeColor(newColor) {
+    setColor(newColor);
+  }
 
   return (
-    <div>
-      <Greeting name='Toan' />
-      <GreetingWithBorder name='Thanh' />
-      <h1>My Header 1</h1>
-      <h2>My Header 2</h2>
-      <h3>My Header 3</h3>
-    </div>
+    <>
+      <h1>My favorite color is {color}!</h1>
+      <button type="button" onClick={() => changeColor('blue')}>Blue</button>
+    </>
   );
 }
 
