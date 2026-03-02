@@ -2,16 +2,22 @@
 import { useState } from "react";
 
 function App() {
-  const [color, setColor] = useState('red');
+  const [car, setCar] = useState({
+    brand: 'Toyota',
+    model: 'Camry',
+    year: '2017',
+    color: 'Silver'
+  });
 
   function changeColor(newColor) {
-    setColor(newColor);
+    setCar(prevCar => ({ ...prevCar, color: newColor }));
   }
 
   return (
     <>
-      <h1>My favorite color is {color}!</h1>
-      <button type="button" onClick={() => changeColor('blue')}>Blue</button>
+      <h1>My {car.brand}</h1>
+      <p>It is a {car.color} {car.model} from {car.year}.</p>
+      <button type="button" onClick={() => changeColor('Blue')}>Blue</button>
     </>
   );
 }
