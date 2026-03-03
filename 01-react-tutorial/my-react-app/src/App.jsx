@@ -1,16 +1,22 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 function App() {
-  const inputElement = useRef();
+  const [inputValue, setInputValue] = useState('');
+  const previousInputValue = useRef('');
 
-  function focusInput() {
-    inputElement.current.focus();
+  useEffect(() => {
+    previousInputValue.current = inputValue;
+  }, [inputValue]);
+
+  function changeHandler(event) {
+    setInputValue(event.target.value);
   }
 
   return (
     <>
-      <input type='text' ref={inputElement} />
-      <button type='button' onClick={focusInput}>Focus Input</button>
+      <input type='text' value={inputValue} onChange={changeHandler} />
+      <h2>Current value: {inputValue}</h2>
+      <h2>Previous value: {previousInputValue.current}</h2>
     </>
   );
 }
