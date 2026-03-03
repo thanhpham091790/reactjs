@@ -1,22 +1,9 @@
 
-import { useState, useEffect } from "react";
+import Component1 from "./Component1";
 
 function App() {
 
-  const [count, setCount] = useState(0);
-  const [calculation, setCalculation] = useState(0);
-
-  useEffect(() => {
-    setCalculation(count * 2);
-  }, [count]);
-
-  return (
-    <>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount((c) => c + 1)}>+</button>
-      <p>Calculation: {calculation}</p>
-    </>
-  );
+  return (<Component1 />);
 }
 
 export default App;
