@@ -1,5 +1,8 @@
-function Component3(props) {
-    const { user } = props;
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
+
+function Component3() {
+    const user = useContext(UserContext);
     return (
         <>
             <h1>Component 3</h1>
