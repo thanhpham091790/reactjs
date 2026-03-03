@@ -1,27 +1,16 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 function App() {
-  const [inputValue, setInputValue] = useState('');
+  const inputElement = useRef();
 
-  const count = useRef(0);
-
-  useEffect(() => {
-    count.current = count.current + 1;
-  });
-
-  function changeHandler(event) {
-    setInputValue(event.target.value);
+  function focusInput() {
+    inputElement.current.focus();
   }
 
   return (
     <>
-      <p>Type in the input field:</p>
-      <input
-        type='text'
-        value={inputValue}
-        onChange={changeHandler}
-      />
-      <h1>Render Count: {count.current}</h1>
+      <input type='text' ref={inputElement} />
+      <button type='button' onClick={focusInput}>Focus Input</button>
     </>
   );
 }
