@@ -1,18 +1,17 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Button from './Button';
 
 function App() {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
 
-  function clickHandler1() {
+  const clickHandler1 = useCallback(() => {
     setCount1(count1 + 1);
-  }
+  }, [count1]);
 
-  function clickHandler2() {
+  const clickHandler2 = useCallback(() => {
     setCount2(count2 + 1);
-  }
-
+  }, [count2]);
   console.log('App rendered!');
 
   return (
