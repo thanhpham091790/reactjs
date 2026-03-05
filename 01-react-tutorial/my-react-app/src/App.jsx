@@ -1,27 +1,44 @@
-import { useState, useCallback } from 'react';
-import Button from './Button';
+import { useState } from 'react';
+
 
 function App() {
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
 
-  const clickHandler1 = useCallback(() => {
-    setCount1(count1 + 1);
-  }, [count1]);
+  const clickHandler = () => {
+    setCount(count + 1);
+  }
 
-  const clickHandler2 = useCallback(() => {
-    setCount2(count2 + 1);
-  }, [count2]);
-  console.log('App rendered!');
+  const addTodoHandler = () => {
+    setTodos((prevTodos) => [...prevTodos, 'New Todo']);
+  }
+
+  const expensiveCalculation = (number) => {
+    console.log('Calculating...');
+    for (let i = 0; i < 1000000000; i++) {
+      number += 1;
+    }
+    return number;
+  }
 
   return (
-    <>
-      <h2>Without useCallback:</h2>
-      <p>Count 1: {count1}</p>
-      <p>Count 2: {count2}</p>
-      <Button onClick={clickHandler1} text='Button 1' />
-      <Button onClick={clickHandler2} text='Button 2' />
-    </>
+    <div>
+      <div>
+        <h2>My Todos</h2>
+        {todos.map((todo, index) => {
+          return <p key={index}>{todo}</p>
+        })}
+        <button type='button' onClick={addTodoHandler}>Add Todo</button>
+      </div>
+      <hr />
+      <div>
+        <p>Count: {count}</p>
+        <button type='button' onClick={clickHandler}>+</button>
+        <h2>Expensive Calculation</h2>
+        <p>{expensiveCalculation(count)}</p>
+        <p>Note that this example executes the expensive function also when you click on the Add Todo button.</p>
+      </div>
+    </div>
   );
 }
 
