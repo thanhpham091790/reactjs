@@ -1,22 +1,27 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState } from 'react';
+import Button from './Button';
 
 function App() {
-  const [inputValue, setInputValue] = useState('');
-  const previousInputValue = useRef('');
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
 
-  useEffect(() => {
-    previousInputValue.current = inputValue;
-  }, [inputValue]);
-
-  function changeHandler(event) {
-    setInputValue(event.target.value);
+  function clickHandler1() {
+    setCount1(count1 + 1);
   }
+
+  function clickHandler2() {
+    setCount2(count2 + 1);
+  }
+
+  console.log('App rendered!');
 
   return (
     <>
-      <input type='text' value={inputValue} onChange={changeHandler} />
-      <h2>Current value: {inputValue}</h2>
-      <h2>Previous value: {previousInputValue.current}</h2>
+      <h2>Without useCallback:</h2>
+      <p>Count 1: {count1}</p>
+      <p>Count 2: {count2}</p>
+      <Button onClick={clickHandler1} text='Button 1' />
+      <Button onClick={clickHandler2} text='Button 2' />
     </>
   );
 }
