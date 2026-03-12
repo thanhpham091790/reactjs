@@ -1,9 +1,3 @@
-
-function App() {
-
-  return (
-    <>Tic Tac Toe</>
-  )
+export default function Square() {
+  return <button className="square">X</button>
 }
-
-export default App
