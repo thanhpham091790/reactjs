@@ -56,7 +56,9 @@ export default function Game() {
 
 function Board({ xIsNext, squares, onPlay }) {
 
-  const winner = calculateWinner(squares);
+  const [winner, threeSquares] = calculateWinner(squares);
+  console.log(threeSquares);
+
   let status;
 
   if (winner) {
@@ -66,7 +68,7 @@ function Board({ xIsNext, squares, onPlay }) {
   }
 
   function handleClick(i) {
-    if (squares[i] || calculateWinner(squares)) return;
+    if (squares[i] || winner) return;
 
     const nextSquares = squares.slice();
     if (xIsNext) {
@@ -78,10 +80,10 @@ function Board({ xIsNext, squares, onPlay }) {
   }
 
 
-  function Square({ value, onSquareClick }) {
+  function Square({ winSquare, value, onSquareClick }) {
     return (
       <button
-        className="square"
+        className={`square ${winSquare ? 'highlight' : ''}`}
         onClick={onSquareClick}
       >{value}</button>
     )
@@ -92,7 +94,9 @@ function Board({ xIsNext, squares, onPlay }) {
   for (let i = 0; i < 3; i++) {
     const boardRow = [];
     for (let j = 0; j < 3; j++) {
-      boardRow.push(<Square key={i * 3 + j} value={squares[i * 3 + j]} onSquareClick={() => { handleClick(i * 3 + j) }} />)
+      (threeSquares.length != 0 && threeSquares.includes(i * 3 + j)) ?
+        boardRow.push(<Square key={i * 3 + j} winSquare={true} value={squares[i * 3 + j]} onSquareClick={() => { handleClick(i * 3 + j) }} />) :
+        boardRow.push(<Square key={i * 3 + j} winSquare={false} value={squares[i * 3 + j]} onSquareClick={() => { handleClick(i * 3 + j) }} />)
     }
     board.push(<div className="board-row" key={i}>{boardRow}</div>);
   }
@@ -119,8 +123,8 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return [squares[a], [a, b, c]];
     }
   }
-  return null;
+  return [null, []];
 }
