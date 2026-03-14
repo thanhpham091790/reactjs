@@ -46,6 +46,10 @@ ul {
     padding-inline-start: 20px;
 }
 
+li {
+    padding: 5px;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -88,4 +92,8 @@ body {
 
 .game-info {
     margin-left: 20px;
+}
+
+button {
+    font: inherit;
 }
