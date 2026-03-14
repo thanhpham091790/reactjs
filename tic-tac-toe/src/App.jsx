@@ -5,6 +5,7 @@ export default function Game() {
 
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [isAsc, setIsAsc] = useState(false);
   const currentSquares = history[currentMove];
   const xIsNext = currentMove % 2 === 0;
 
@@ -16,6 +17,10 @@ export default function Game() {
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
+  }
+
+  function sortMove() {
+    setIsAsc(preIsAsc => !preIsAsc);
   }
 
   const moves = history.map((squares, move) => {
@@ -42,8 +47,9 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <ol>{isAsc ? moves : moves.reverse()}</ol>
       </div>
+      <div><button type="button" onClick={sortMove}>Sort Move</button></div>
     </div>
   );
 }
@@ -90,8 +96,6 @@ function Board({ xIsNext, squares, onPlay }) {
     }
     board.push(<div className="board-row" key={i}>{boardRow}</div>);
   }
-
-  console.log(board);
 
   return (
     <>
