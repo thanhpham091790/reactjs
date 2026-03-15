@@ -5,7 +5,7 @@ export default function Game() {
 
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
-  const [isAsc, setIsAsc] = useState(false);
+  const [isAsc, setIsAsc] = useState(true);
   const currentSquares = history[currentMove];
   const xIsNext = currentMove % 2 === 0;
 
@@ -57,13 +57,14 @@ export default function Game() {
 function Board({ xIsNext, squares, onPlay }) {
 
   const [winner, threeSquares] = calculateWinner(squares);
-  console.log(threeSquares);
 
   let status;
 
-  if (winner) {
+  if (winner === 'Draw') {
+    status = 'No winner!';
+  } else if (winner != null) {
     status = 'Winner: ' + winner;
-  } else {
+  }else{
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
 
@@ -120,6 +121,11 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6]
   ];
+
+  if (!squares.includes(null)) {
+    return ['Draw', []]
+  }
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
