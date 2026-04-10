@@ -26,10 +26,11 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
+      const index = squares.findIndex((val, i) => val != history[move - 1][i]);
       if (move === currentMove) {
-        description = 'You are at move #' + move;
+        description = `You are at move #${move} (${Math.floor(index / 3)}, ${index % 3})`;
       } else {
-        description = 'Go to move #' + move;
+        description = `Go to move #${move} (${Math.floor(index / 3)}, ${index % 3})`;
       }
     } else {
       description = 'Go to game start';
@@ -56,7 +57,9 @@ export default function Game() {
 
 function Board({ xIsNext, squares, onPlay }) {
 
+
   const [winner, threeSquares] = calculateWinner(squares);
+  console.log(squares, winner, threeSquares);
 
   let status;
 
@@ -64,7 +67,7 @@ function Board({ xIsNext, squares, onPlay }) {
     status = 'No winner!';
   } else if (winner != null) {
     status = 'Winner: ' + winner;
-  }else{
+  } else {
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
 
@@ -122,15 +125,16 @@ function calculateWinner(squares) {
     [2, 4, 6]
   ];
 
-  if (!squares.includes(null)) {
-    return ['Draw', []]
-  }
-
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return [squares[a], [a, b, c]];
     }
   }
+
+  if (!squares.includes(null)) {
+    return ['Draw', []]
+  }
+
   return [null, []];
 }
