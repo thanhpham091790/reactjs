@@ -1,17 +1,29 @@
 import CategoryRow from "./CategoryRow";
 import ProductRow from "./ProductRow";
-export default function ProductTable({ products }) {
+export default function ProductTable({ products, searchTerm, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
+  let filteredProducts = products.filter((product) => {
+    const nameMatches = product.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const stockMatches = !inStockOnly || product.stocked;
+    return nameMatches && stockMatches;
+  });
 
-  products.forEach((product) => {
-    if (product.category !== lastCategory) {
+  filteredProducts.forEach((filteredProduct) => {
+    if (filteredProduct.category !== lastCategory) {
       rows.push(
-        <CategoryRow key={product.category} category={product.category} />,
+        <CategoryRow
+          key={filteredProduct.category}
+          category={filteredProduct.category}
+        />,
       );
-      lastCategory = product.category;
+      lastCategory = filteredProduct.category;
     }
-    rows.push(<ProductRow key={product.name} product={product} />);
+    rows.push(
+      <ProductRow key={filteredProduct.name} product={filteredProduct} />,
+    );
   });
 
   return (
