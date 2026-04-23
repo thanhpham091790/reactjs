@@ -1,13 +1,69 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>searchable-product-table</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Searchable Product Table</title>
+</head>
+
+<body>
+  <div class="searchable-product-table">
+    <div class="search-bar">
+      <div class="search">
+        <input type="text" placeholder="Search..." />
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" id="in-stock" />
+        <label for="in-stock">Only show products in stock</label>
+      </div>
+    </div>
+    <div class="product-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="category-row">
+            <th colspan="2">Fruits</th>
+          </tr>
+          <tr class="product-row">
+            <td>Apple</td>
+            <td>$1</td>
+          </tr>
+          <tr class="product-row">
+            <td>Dragonfruit</td>
+            <td>$1</td>
+          </tr>
+          <tr class="product-row">
+            <td class="out-of-stock">Passionfruit</td>
+            <td>$2</td>
+          </tr>
+          <tr class="category-row">
+            <th colspan="2">Vegetables</th>
+          </tr>
+          <tr class="product-row">
+            <td>Spinach</td>
+            <td>$2</td>
+          </tr>
+          <tr class="product-row">
+            <td class="out-of-stock">Pumpkin</td>
+            <td>$4</td>
+          </tr>
+          <tr class="product-row">
+            <td>Peas</td>
+            <td>$1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
