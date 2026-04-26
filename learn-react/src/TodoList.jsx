@@ -7,7 +7,7 @@ export default function TodoList() {
     },
   };
   return (
-    <div className="todo-list" style={person.theme}>
+    <section className="todo-list" style={person.theme}>
       <h1>{person.name}'s Todos</h1>
       <img
         className="avatar"
@@ -19,6 +19,6 @@ export default function TodoList() {
         <li>Rehearse a movie scene</li>
         <li>Improve spectrum technology</li>
       </ul>
-    </div>
+    </section>
   );
 }
