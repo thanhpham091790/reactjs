@@ -5,16 +5,25 @@ export default function Gallery() {
     <section className="gallery">
       <h1>Amazing scientists</h1>
       <Profile
-        src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
-        alt="Katherine Johnson"
+        person={{
+          id: "MK3eW3As",
+          name: "Katherine Johnson",
+        }}
+        size={100}
       />
       <Profile
-        src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
-        alt="Alan L. Hart"
+        person={{
+          id: "QIrZWGIs",
+          name: "Alan L. Hart",
+        }}
+        size={100}
       />
       <Profile
-        src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
-        alt="Hedy Lamarr"
+        person={{
+          id: "yXOvdOSs",
+          name: "Hedy Lamarr",
+        }}
+        size={100}
       />
     </section>
   );
