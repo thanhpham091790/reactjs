@@ -6,21 +6,21 @@ export default function Gallery() {
       <h1>Amazing scientists</h1>
       <Profile
         person={{
-          id: "MK3eW3As",
+          imageId: "MK3eW3A",
           name: "Katherine Johnson",
         }}
         size={100}
       />
       <Profile
         person={{
-          id: "QIrZWGIs",
+          imageId: "QIrZWGI",
           name: "Alan L. Hart",
         }}
         size={100}
       />
       <Profile
         person={{
-          id: "yXOvdOSs",
+          imageId: "yXOvdOS",
           name: "Hedy Lamarr",
         }}
         size={100}
