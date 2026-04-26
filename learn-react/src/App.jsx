@@ -1,7 +1,14 @@
 import "./App.css";
+import Gallery from "./Gallery";
+import TodoList from "./TodoList";
 
 function App() {
-  return <>Learn React</>;
+  return (
+    <div className="app">
+      <Gallery />
+      <TodoList />
+    </div>
+  );
 }
 
 export default App;
