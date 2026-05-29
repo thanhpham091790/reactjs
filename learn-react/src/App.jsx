@@ -1,14 +1,8 @@
-function App() {
+export default function Profile() {
   return (
-    <article>
-      <h1>My First Component</h1>
-      <ol>
-        <li>Component: UI Building Block</li>
-        <li>Defining a Component</li>
-        <li>Using a Component</li>
-      </ol>
-    </article>
+    <img
+      src="https://react.dev/images/docs/scientists/MK3eW3Am.jpg"
+      alt="Katherine Johnson"
+    />
   );
 }
-
-export default App;
