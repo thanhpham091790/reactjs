@@ -1,17 +1,13 @@
-import "./App.css";
-import Gallery from "./Gallery";
-import TodoList from "./TodoList";
-import PackingList from "./PackingList";
-import List from "./List";
-
 function App() {
   return (
-    <div className="app">
-      <List />
-      <PackingList />
-      <Gallery />
-      <TodoList />
-    </div>
+    <article>
+      <h1>My First Component</h1>
+      <ol>
+        <li>Component: UI Building Block</li>
+        <li>Defining a Component</li>
+        <li>Using a Component</li>
+      </ol>
+    </article>
   );
 }
 
