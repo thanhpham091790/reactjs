@@ -1,44 +1,31 @@
-import { getImageUrl } from "./utils";
+import Avatar from "./Avatar";
 
-function Avatar({ person, size }) {
+function Card({ children }) {
   return (
-    <img
-      className="avatar"
-      src={getImageUrl(person.imageId)}
-      alt={person.name}
-      width={size}
-      height={size}
+    <div
       style={{
-        borderRadius: "50%",
+        width: "150px",
+        height: "150px",
+        padding: "20px",
+        margin: "20px",
+        border: "1px solid grey",
+        borderRadius: "10px",
+        boxSizing: "border-box",
+        display: "flex",
+        direction: "row",
+        justifyContent: "center",
+        alignItems: "center",
       }}
-    />
+    >
+      {children}
+    </div>
   );
 }
 
 export default function Profile() {
   return (
-    <>
-      <Avatar
-        size={100}
-        person={{
-          name: "Katsuko Saruhashi",
-          imageId: "YfeOqp2",
-        }}
-      />
-      <Avatar
-        size={80}
-        person={{
-          name: "Aklilu Lemma",
-          imageId: "OKS67lh",
-        }}
-      />
-      <Avatar
-        size={50}
-        person={{
-          name: "Lin Lanying",
-          imageId: "1bX5QH6",
-        }}
-      />
-    </>
+    <Card>
+      <Avatar size={100} person={{ name: "Thanh Pham", imageId: "YfeOqp2" }} />
+    </Card>
   );
 }
