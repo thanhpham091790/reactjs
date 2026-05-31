@@ -1,11 +1,13 @@
-function Avatar() {
+function Avatar({ person, size }) {
   return (
     <img
       className="avatar"
-      src="https://react.dev/images/docs/scientists/1bX5QH6.jpg"
-      alt="Lin Lanying"
-      width={100}
-      height={100}
+      src={
+        "https://react.dev/images/docs/scientists/" + person.imageId + ".jpg"
+      }
+      alt={person.name}
+      width={size}
+      height={size}
     />
   );
 }
