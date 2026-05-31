@@ -1,5 +1,9 @@
+const today = new Date();
+
+function formatDate(date) {
+  return new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
+}
+
 export default function TodoList() {
-  const avatar = "https://react.dev/images/docs/scientists/7vQD0fPs.jpg";
-  const description = "Gregorio Y. Zara";
-  return <img className="avatar" alt={description} src={avatar} />;
+  return <h1>To Do List for {formatDate(today)}</h1>;
 }
