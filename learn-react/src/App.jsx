@@ -6,6 +6,7 @@ export default function Counter() {
   function buttonClickHandler() {
     setNumber(number + 6);
     setNumber((preNum) => preNum + 1);
+    setNumber(1990);
   }
 
   return (
