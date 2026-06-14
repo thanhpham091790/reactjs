@@ -3,9 +3,8 @@ import { useState } from "react";
 export default function Counter() {
   const [number, setNumber] = useState(0);
   function numberChangeHandler() {
-    setNumber(number + 1);
-    setNumber(number + 1);
-    setNumber(number + 1);
+    setNumber(number + 5);
+    alert(number);
   }
   return (
     <>
