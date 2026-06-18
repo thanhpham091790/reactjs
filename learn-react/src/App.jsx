@@ -1,18 +1,33 @@
 import { useState } from "react";
 
-export default function Counter() {
-  const [number, setNumber] = useState(0);
+export default function RequestTracker() {
+  const [pending, setPending] = useState(0);
+  const [completed, setCompleted] = useState(0);
 
-  function buttonClickHandler() {
-    setNumber(number + 6);
-    setNumber((preNum) => preNum + 1);
-    setNumber(1990);
+  async function clickHandler() {
+    setPending((prevPending) => prevPending + 1);
+    await delay(3000);
+    setPending((prevPending) => prevPending - 1);
+    setCompleted((prevCompleted) => prevCompleted + 1);
+  }
+
+  function delay(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
   }
 
   return (
     <>
-      <h1>{number}</h1>
-      <button onClick={buttonClickHandler}>Increase the number</button>
+      <p>
+        <b>Pending: {pending}</b>
+      </p>
+      <p>
+        <b>Completed: {completed}</b>
+      </p>
+      <p>
+        <button onClick={clickHandler}>Buy</button>
+      </p>
     </>
   );
 }
