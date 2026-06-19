@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useImmer } from "use-immer";
 
 export default function Form() {
-  const [person, setPerson] = useState({
+  const [person, setPerson] = useImmer({
     name: "Thanh",
     artwork: {
       title: "Blue Nana",
@@ -12,20 +12,15 @@ export default function Form() {
 
   function formChangeHandler(e) {
     const { name, value } = e.target;
-    if (name in person.artwork) {
-      setPerson({
-        ...person,
-        artwork: {
-          ...person.artwork,
-          [name]: value,
-        },
-      });
-    } else {
-      setPerson({
-        ...person,
-        [name]: value,
-      });
-    }
+    setPerson((prevPerson) => {
+      const path = name.split(".");
+      let current = prevPerson;
+      for (let i = 0; i < path.length - 1; i++) {
+        current = current[path[i]];
+      }
+      const finalKey = path[path.length - 1];
+      current[finalKey] = value;
+    });
   }
 
   return (
@@ -43,7 +38,7 @@ export default function Form() {
         <label>Title:</label>
         <input
           type="text"
-          name="title"
+          name="artwork.title"
           value={person.artwork.title}
           onChange={formChangeHandler}
         />
@@ -52,7 +47,7 @@ export default function Form() {
         <label>City:</label>
         <input
           type="text"
-          name="city"
+          name="artwork.city"
           value={person.artwork.city}
           onChange={formChangeHandler}
         />
@@ -61,7 +56,7 @@ export default function Form() {
         <label>Image:</label>
         <input
           type="text"
-          name="image"
+          name="artwork.image"
           value={person.artwork.image}
           onChange={formChangeHandler}
         />
