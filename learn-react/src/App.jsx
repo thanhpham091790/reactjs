@@ -2,47 +2,74 @@ import { useState } from "react";
 
 export default function Form() {
   const [person, setPerson] = useState({
-    firstName: "Thanh",
-    lastName: "Pham",
-    email: "thanhpham091790@gmail.com",
+    name: "Thanh",
+    artwork: {
+      title: "Blue Nana",
+      city: "Hamburg",
+      image: "https://react.dev/images/docs/scientists/Sd1AgUOm.jpg",
+    },
   });
 
   function formChangeHandler(e) {
     const { name, value } = e.target;
-    setPerson({ ...person, [name]: value });
+    if (name in person.artwork) {
+      setPerson({
+        ...person,
+        artwork: {
+          ...person.artwork,
+          [name]: value,
+        },
+      });
+    } else {
+      setPerson({
+        ...person,
+        [name]: value,
+      });
+    }
   }
 
   return (
     <form>
       <div>
-        <label>First name:</label>
+        <label>Name:</label>
         <input
           type="text"
-          value={person.firstName}
-          name="firstName"
+          name="name"
+          value={person.name}
           onChange={formChangeHandler}
         />
       </div>
       <div>
-        <label>Last name:</label>
+        <label>Title:</label>
         <input
           type="text"
-          value={person.lastName}
-          name="lastName"
+          name="title"
+          value={person.artwork.title}
           onChange={formChangeHandler}
         />
       </div>
       <div>
-        <label>Email:</label>
+        <label>City:</label>
         <input
-          type="email"
-          value={person.email}
-          name="email"
+          type="text"
+          name="city"
+          value={person.artwork.city}
           onChange={formChangeHandler}
         />
       </div>
       <div>
-        {person.firstName} {person.lastName} ({person.email})
+        <label>Image:</label>
+        <input
+          type="text"
+          name="image"
+          value={person.artwork.image}
+          onChange={formChangeHandler}
+        />
+      </div>
+
+      <div>
+        <i>{person.artwork.title}</i> by {person.name} (located in{" "}
+        {person.artwork.city})
       </div>
     </form>
   );
