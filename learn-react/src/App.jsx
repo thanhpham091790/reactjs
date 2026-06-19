@@ -1,42 +1,49 @@
 import { useState } from "react";
 
-export default function MovingDot() {
-  const [position, setPosition] = useState({
-    x: 0,
-    y: 0,
+export default function Form() {
+  const [person, setPerson] = useState({
+    firstName: "Thanh",
+    lastName: "Pham",
+    email: "thanhpham091790@gmail.com",
   });
 
-  function pointerMoveHander(e) {
-    setPosition({
-      x: e.clientX,
-      y: e.clientY,
-    });
+  function formChangeHandler(e) {
+    const { name, value } = e.target;
+    setPerson({ ...person, [name]: value });
   }
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: "100vh",
-        border: "1px solid grey",
-        borderRadius: "10px",
-        margin: "0 auto",
-      }}
-      onPointerMove={pointerMoveHander}
-    >
-      <div
-        style={{
-          position: "absolute",
-          width: "20px",
-          height: "20px",
-          borderRadius: "50%",
-          backgroundColor: "red",
-          left: "-10px",
-          top: "-10px",
-          transform: `translate(${position.x}px,${position.y}px)`,
-        }}
-      ></div>
-    </div>
+    <form>
+      <div>
+        <label>First name:</label>
+        <input
+          type="text"
+          value={person.firstName}
+          name="firstName"
+          onChange={formChangeHandler}
+        />
+      </div>
+      <div>
+        <label>Last name:</label>
+        <input
+          type="text"
+          value={person.lastName}
+          name="lastName"
+          onChange={formChangeHandler}
+        />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          value={person.email}
+          name="email"
+          onChange={formChangeHandler}
+        />
+      </div>
+      <div>
+        {person.firstName} {person.lastName} ({person.email})
+      </div>
+    </form>
   );
 }
