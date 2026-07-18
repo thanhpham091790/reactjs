@@ -1,35 +1,28 @@
 import { useState } from "react";
 
 export default function App() {
-  const [to, setTo] = useState("Alice");
-  const [message, setMessage] = useState("Hello");
+  const [score, setScore] = useState(0);
 
-  function handleToChange(event) {
-    setTo(event.target.value);
+  function handleIncrement() {
+    setScore((prevScore) => prevScore + 1);
   }
-  function handleMessageChange(event) {
-    setMessage(event.target.value);
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
-    setTimeout(() => {
-      alert(`You said ${message} to ${to}.`);
-    }, 5000);
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
-      <p>
-        To:
-        <select onChange={handleToChange} value={to}>
-          <option value="Alice">Alice</option>
-          <option value="Bob">Bob</option>
-        </select>
-      </p>
-      <p>
-        <textarea value={message} onChange={handleMessageChange} />
-      </p>
-      <button type="submit">Send</button>
-    </form>
+    <>
+      <div>
+        <button onClick={() => handleIncrement()}>+1</button>
+        <button
+          onClick={() => {
+            handleIncrement();
+            handleIncrement();
+            handleIncrement();
+          }}
+        >
+          +3
+        </button>
+      </div>
+      <div>
+        <h2>Score: {score}</h2>
+      </div>
+    </>
   );
 }
