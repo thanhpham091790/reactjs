@@ -1,36 +1,35 @@
-import { sculptureList } from "./data.js";
 import { useState } from "react";
 
 export default function App() {
-  const [show, setShow] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [to, setTo] = useState("Alice");
+  const [message, setMessage] = useState("Hello");
 
-  function handleShow() {
-    setShow((prevShow) => !prevShow);
+  function handleToChange(event) {
+    setTo(event.target.value);
   }
-
-  function handleNext() {
-    if (index < sculptureList.length - 1) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
+  function handleMessageChange(event) {
+    setMessage(event.target.value);
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    setTimeout(() => {
+      alert(`You said ${message} to ${to}.`);
+    }, 5000);
   }
 
   return (
-    <>
-      <button onClick={handleNext}>Next</button>
-      <h2>
-        <i>{sculptureList[index].name}</i> by {sculptureList[index].artist}
-      </h2>
+    <form onSubmit={handleSubmit}>
       <p>
-        ({index + 1} of {sculptureList.length})
+        To:
+        <select onChange={handleToChange} value={to}>
+          <option value="Alice">Alice</option>
+          <option value="Bob">Bob</option>
+        </select>
       </p>
-      <button onClick={handleShow}>{show ? "Hide" : "Show"} details</button>
-      {show && <p>{sculptureList[index].description}</p>}
       <p>
-        <img src={sculptureList[index].url} alt={sculptureList[index].alt} />
+        <textarea value={message} onChange={handleMessageChange} />
       </p>
-    </>
+      <button type="submit">Send</button>
+    </form>
   );
 }
