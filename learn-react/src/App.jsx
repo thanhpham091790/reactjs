@@ -1,89 +1,42 @@
 import { useState } from "react";
 
+const initialList = [
+  { id: 0, title: "Big Bellies", seen: false },
+  { id: 1, title: "Lunar Landscape", seen: false },
+  { id: 2, title: "Terracotta Army", seen: true },
+];
+
 export default function App() {
-  const [person, setPerson] = useState({
-    name: "Niki de Saint Phalle",
-    artwork: {
-      title: "Blue Nana",
-      city: "Hamburg",
-      image: "https://react.dev/images/docs/scientists/Sd1AgUOm.jpg",
-    },
-  });
+  const [list, setList] = useState(initialList);
 
-  function handleNameChange(event) {
-    setPerson({
-      ...person,
-      name: event.target.value,
-    });
-  }
-
-  function handleTitleChange(event) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        title: event.target.value,
-      },
-    });
-  }
-
-  function handleCityChange(event) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        city: event.target.value,
-      },
-    });
-  }
-
-  function handleImageChange(event) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        image: event.target.value,
-      },
-    });
+  function handleCheckboxChange(id, nextSeen) {
+    setList(
+      list.map((artwork) => {
+        if (artwork.id === id) {
+          return { ...artwork, seen: nextSeen };
+        } else {
+          return artwork;
+        }
+      }),
+    );
   }
 
   return (
     <>
-      <p>
-        Name:{" "}
-        <input type="text" value={person.name} onChange={handleNameChange} />
-      </p>
-      <p>
-        Title:{" "}
-        <input
-          type="text"
-          value={person.artwork.title}
-          onChange={handleTitleChange}
-        />
-      </p>
-      <p>
-        City:{" "}
-        <input
-          type="text"
-          value={person.artwork.city}
-          onChange={handleCityChange}
-        />
-      </p>
-      <p>
-        Image:{" "}
-        <input
-          type="text"
-          value={person.artwork.image}
-          onChange={handleImageChange}
-        />
-      </p>
-      <p>
-        <i>{person.artwork.title}</i> by {person.name} (located in{" "}
-        {person.artwork.city})
-      </p>
-      <p>
-        <img src={person.artwork.image} alt={person.artwork.title} />
-      </p>
+      <h1>Art Bucket List</h1>
+      <h2>My list of art to see:</h2>
+      <ul>
+        {list.map((art) => (
+          <li key={art.id}>
+            <input
+              type="checkbox"
+              checked={art.seen}
+              onChange={(e) => handleCheckboxChange(art.id, e.target.checked)}
+            />{" "}
+            {art.title}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
