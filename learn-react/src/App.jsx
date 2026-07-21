@@ -1,12 +1,13 @@
-function Button({ onSmash, children }) {
-  return <button onClick={onSmash}>{children}</button>;
-}
+import "./App.css";
 
 export default function App() {
   return (
-    <>
-      <Button onSmash={() => alert("Playing!")}>Play Movie</Button>{" "}
-      <Button onSmash={() => alert("Uploading!")}>Upload Image</Button>
-    </>
+    <div
+      className="Toolbar"
+      onClick={() => alert("You clicked on the toolbar!")}
+    >
+      <button onClick={() => alert("Playing!")}>Play Movie</button> {"  "}
+      <button onClick={() => alert("Uploading!")}>Upload Image</button>
+    </div>
   );
 }
