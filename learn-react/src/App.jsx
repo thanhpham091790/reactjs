@@ -1,7 +1,16 @@
 export default function App() {
-  function handleClick() {
-    alert("You clicked me!");
+  return (
+    <>
+      <AlertButton message="Playing!">Play Movie</AlertButton>{" "}
+      <AlertButton message="Uploading!">Upload Image</AlertButton>
+    </>
+  );
+}
+
+function AlertButton({ message, children }) {
+  function handleClick(mes) {
+    alert(mes);
   }
 
-  return <button onClick={handleClick}>I don't do anything</button>;
+  return <button onClick={() => handleClick(message)}>{children}</button>;
 }
