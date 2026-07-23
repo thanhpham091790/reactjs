@@ -1,11 +1,12 @@
 import { sculptureList } from "./data";
+import { useState } from "react";
 
 export default function App() {
-  let index = 0;
+  const [index, setIndex] = useState(0);
   let sculpture = sculptureList[index];
 
   function handleClick() {
-    index = index + 1;
+    setIndex(index + 1);
   }
 
   return (
