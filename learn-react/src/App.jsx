@@ -3,11 +3,16 @@ import { useState } from "react";
 
 export default function App() {
   const [index, setIndex] = useState(0);
-  let sculpture = sculptureList[index];
+  const [showMore, setShowMore] = useState(false);
 
   function handleClick() {
     setIndex(index + 1);
   }
+  function handleMoreClick() {
+    setShowMore((prevShowMore) => !prevShowMore);
+  }
+
+  let sculpture = sculptureList[index];
 
   return (
     <>
@@ -19,8 +24,13 @@ export default function App() {
       <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
-      <img src={sculpture.url} alt={sculpture.alt} />
-      <p>{sculpture.description}</p>
+      <button onClick={handleMoreClick}>
+        {showMore ? "Hide" : "Show"} details
+      </button>
+      {showMore && <p>{sculpture.description}</p>}
+      <p>
+        <img src={sculpture.url} alt={sculpture.alt} />
+      </p>
     </>
   );
 }
