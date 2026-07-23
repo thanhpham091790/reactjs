@@ -2,6 +2,15 @@ import { sculptureList } from "./data";
 import { useState } from "react";
 
 export default function App() {
+  return (
+    <>
+      <Gallery />
+      <Gallery />
+    </>
+  );
+}
+
+function Gallery() {
   const [index, setIndex] = useState(0);
   const [showMore, setShowMore] = useState(false);
 
