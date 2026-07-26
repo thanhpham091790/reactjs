@@ -14,11 +14,13 @@ export default function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsSent(true);
     sendMessage();
+    setIsSent(true);
   }
 
-  return (
+  return isSent ? (
+    <h1>Your message is on its way</h1>
+  ) : (
     <form onSubmit={handleSubmit}>
       <textarea placeholder="Message" value={message} onChange={handleChange} />
       <br />
