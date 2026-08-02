@@ -3,9 +3,9 @@ import { useState } from "react";
 export default function App() {
   const [number, setNumber] = useState(0);
   function handleClick() {
-    setNumber(number + 1);
-    setNumber(number + 1);
-    setNumber(number + 1);
+    setNumber((prevNumber) => prevNumber + 1);
+    setNumber((prevNumber) => prevNumber + 1);
+    setNumber((prevNumber) => prevNumber + 1);
   }
   return (
     <div
