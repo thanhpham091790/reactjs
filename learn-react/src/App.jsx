@@ -1,29 +1,15 @@
 import { useState } from "react";
 
-export default function App() {
+export default function Counter() {
   const [number, setNumber] = useState(0);
   function handleClick() {
-    setNumber((prevNumber) => prevNumber + 1);
-    setNumber((prevNumber) => prevNumber + 1);
+    setNumber(number + 5);
     setNumber((prevNumber) => prevNumber + 1);
   }
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <h1
-        style={{
-          display: "inline-block",
-          marginRight: "20px",
-        }}
-      >
-        {number}
-      </h1>
-      <button onClick={handleClick}>+3</button>
-    </div>
+    <>
+      <h1>{number}</h1>
+      <button onClick={handleClick}>Increase the number</button>
+    </>
   );
 }
