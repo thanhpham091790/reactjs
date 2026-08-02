@@ -5,6 +5,7 @@ export default function Counter() {
   function handleClick() {
     setNumber(number + 5);
     setNumber((prevNumber) => prevNumber + 1);
+    setNumber(37);
   }
   return (
     <>
