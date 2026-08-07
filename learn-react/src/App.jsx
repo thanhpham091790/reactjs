@@ -1,32 +1,49 @@
-import { useState } from "react";
+import { getFinalState } from "./processQueue.js";
 
-export default function RequestTracker() {
-  const [pending, setPending] = useState(0);
-  const [completed, setCompleted] = useState(0);
+function increment(n) {
+  return n + 1;
+}
+increment.toString = () => "n => n+1";
 
-  async function handleClick() {
-    setPending((prevPending) => prevPending + 1);
-    await delay(3000);
-    setPending((prevPending) => prevPending - 1);
-    setCompleted((prevCompleted) => prevCompleted + 1);
-  }
+export default function App() {
+  console.log([increment, increment, increment].join(","));
+  return (
+    <>
+      <TestCase baseState={0} queue={[1, 1, 1]} expected={1} />
+      <hr />
+      <TestCase
+        baseState={0}
+        queue={[increment, increment, increment]}
+        expected={3}
+      />
+      <hr />
+      <TestCase baseState={0} queue={[5, increment]} expected={6} />
+      <hr />
+      <TestCase baseState={0} queue={[5, increment, 42]} expected={42} />
+    </>
+  );
+}
 
-  function delay(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-  }
-
+function TestCase({ baseState, queue, expected }) {
+  const actual = getFinalState(baseState, queue);
   return (
     <>
       <p>
-        <b>Pending: {pending}</b>
+        Base state: <b>{baseState}</b>
       </p>
       <p>
-        <b>Completed: {completed}</b>
+        Queue: <b>[{queue.join(", ")}]</b>
       </p>
       <p>
-        <button onClick={handleClick}>Buy</button>
+        Expected result: <b>{expected}</b>
+      </p>
+      <p
+        style={{
+          color: actual === expected ? "green" : "red",
+        }}
+      >
+        Your result: <b>{actual}</b> (
+        {actual === expected ? "correct" : "wrong"})
       </p>
     </>
   );
