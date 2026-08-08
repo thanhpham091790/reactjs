@@ -1,50 +1,38 @@
-import { getFinalState } from "./processQueue.js";
+import { useState } from "react";
+import "./App.css";
 
-function increment(n) {
-  return n + 1;
-}
-increment.toString = () => "n => n+1";
+export default function MovingDot() {
+  // states
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-export default function App() {
-  console.log([increment, increment, increment].join(","));
+  // handlers
+  function handlePointerMove(e) {
+    position.x = e.clientX;
+    position.y = e.clientY;
+  }
+
   return (
-    <>
-      <TestCase baseState={0} queue={[1, 1, 1]} expected={1} />
-      <hr />
-      <TestCase
-        baseState={0}
-        queue={[increment, increment, increment]}
-        expected={3}
-      />
-      <hr />
-      <TestCase baseState={0} queue={[5, increment]} expected={6} />
-      <hr />
-      <TestCase baseState={0} queue={[5, increment, 42]} expected={42} />
-    </>
-  );
-}
-
-function TestCase({ baseState, queue, expected }) {
-  const actual = getFinalState(baseState, queue);
-  return (
-    <>
-      <p>
-        Base state: <b>{baseState}</b>
-      </p>
-      <p>
-        Queue: <b>[{queue.join(", ")}]</b>
-      </p>
-      <p>
-        Expected result: <b>{expected}</b>
-      </p>
-      <p
+    <div
+      onPointerMove={handlePointerMove}
+      style={{
+        width: "calc(100vw - 20px)",
+        height: "calc(100vh - 20px)",
+        border: "1px solid red",
+        margin: "10px",
+        position: "relative",
+      }}
+    >
+      <div
         style={{
-          color: actual === expected ? "green" : "red",
+          width: "20px",
+          height: "20px",
+          backgroundColor: "red",
+          borderRadius: "50%",
+          position: "absolute",
+          left: "-10px",
+          top: "-10px",
         }}
-      >
-        Your result: <b>{actual}</b> (
-        {actual === expected ? "correct" : "wrong"})
-      </p>
-    </>
+      ></div>
+    </div>
   );
 }

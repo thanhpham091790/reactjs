@@ -1,4 +1,10 @@
-.Toolbar {
-    background-color: #aaaaaa;
-    padding: 10px;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
