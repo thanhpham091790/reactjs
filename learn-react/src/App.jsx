@@ -7,18 +7,18 @@ export default function MovingDot() {
 
   // handlers
   function handlePointerMove(e) {
-    position.x = e.clientX;
-    position.y = e.clientY;
+    setPosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
   }
 
   return (
     <div
       onPointerMove={handlePointerMove}
       style={{
-        width: "calc(100vw - 20px)",
-        height: "calc(100vh - 20px)",
-        border: "1px solid red",
-        margin: "10px",
+        width: "100vw",
+        height: "100vh",
         position: "relative",
       }}
     >
@@ -31,6 +31,7 @@ export default function MovingDot() {
           position: "absolute",
           left: "-10px",
           top: "-10px",
+          transform: `translate(${position.x}px, ${position.y}px)`,
         }}
       ></div>
     </div>
