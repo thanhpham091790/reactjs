@@ -3,62 +3,91 @@ import { useState } from "react";
 export default function Form() {
   // States
   const [person, setPerson] = useState({
-    firstName: "Barbara",
-    lastName: "Hepworth",
-    email: "bhepworth@sculpture.com",
+    name: "Niki de Saint Phalle",
+    artwork: {
+      title: "Blue Nana",
+      city: "Hamburg",
+      image: "https://react.dev/images/docs/scientists/Sd1AgUOm.jpg",
+    },
   });
 
   // Handlers
-  function handleFirstNameChange(e) {
+  function handleNameChange(e) {
     setPerson({
       ...person,
-      firstName: e.target.value,
+      name: e.target.value,
     });
   }
 
-  function handleLastNameChange(e) {
+  function handleTitleChange(e) {
     setPerson({
       ...person,
-      lastName: e.target.value,
+      artwork: {
+        ...person.artwork,
+        title: e.target.value,
+      },
     });
   }
 
-  function handleEmailChange(e) {
+  function handleCityChange(e) {
     setPerson({
       ...person,
-      email: e.target.value,
+      artwork: {
+        ...person.artwork,
+        city: e.target.value,
+      },
+    });
+  }
+
+  function handleImageChange(e) {
+    setPerson({
+      ...person,
+      artwork: {
+        ...person.artwork,
+        image: e.target.value,
+      },
     });
   }
 
   return (
     <form>
-      <label>First name: </label>{" "}
+      <label>Name: </label>{" "}
       <input
         type="text"
-        placeholder="First name"
-        value={person.firstName}
-        onChange={handleFirstNameChange}
+        name="name"
+        value={person.name}
+        onChange={handleNameChange}
       />
       <br />
-      <label>Last name: </label>{" "}
+      <label>Title: </label>{" "}
       <input
         type="text"
-        placeholder="Last name"
-        value={person.lastName}
-        onChange={handleLastNameChange}
+        name="title"
+        value={person.artwork.title}
+        onChange={handleTitleChange}
       />
       <br />
-      <label>Email: </label>{" "}
+      <label>City: </label>{" "}
       <input
-        type="email"
-        placeholder="Email"
-        value={person.email}
-        onChange={handleEmailChange}
+        type="text"
+        name="city"
+        value={person.artwork.city}
+        onChange={handleCityChange}
+      />
+      <br />
+      <label>Image: </label>{" "}
+      <input
+        type="text"
+        name="image"
+        value={person.artwork.image}
+        onChange={handleImageChange}
       />
       <br />
       <p>
-        {person.firstName} {person.lastName} ({person.email})
+        {person.artwork.title} by {person.name} (located in{" "}
+        {person.artwork.city})
       </p>
+      <img src={person.artwork.image} alt={person.artwork.title} />
     </form>
   );
 }
