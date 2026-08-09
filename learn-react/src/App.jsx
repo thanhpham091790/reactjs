@@ -1,39 +1,64 @@
 import { useState } from "react";
-import "./App.css";
 
-export default function MovingDot() {
-  // states
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+export default function Form() {
+  // States
+  const [person, setPerson] = useState({
+    firstName: "Barbara",
+    lastName: "Hepworth",
+    email: "bhepworth@sculpture.com",
+  });
 
-  // handlers
-  function handlePointerMove(e) {
-    setPosition({
-      x: e.clientX,
-      y: e.clientY,
+  // Handlers
+  function handleFirstNameChange(e) {
+    setPerson({
+      ...person,
+      firstName: e.target.value,
+    });
+  }
+
+  function handleLastNameChange(e) {
+    setPerson({
+      ...person,
+      lastName: e.target.value,
+    });
+  }
+
+  function handleEmailChange(e) {
+    setPerson({
+      ...person,
+      email: e.target.value,
     });
   }
 
   return (
-    <div
-      onPointerMove={handlePointerMove}
-      style={{
-        width: "100vw",
-        height: "100vh",
-        position: "relative",
-      }}
-    >
-      <div
-        style={{
-          width: "20px",
-          height: "20px",
-          backgroundColor: "red",
-          borderRadius: "50%",
-          position: "absolute",
-          left: "-10px",
-          top: "-10px",
-          transform: `translate(${position.x}px, ${position.y}px)`,
-        }}
-      ></div>
-    </div>
+    <form>
+      <label>First name: </label>{" "}
+      <input
+        type="text"
+        placeholder="First name"
+        value={person.firstName}
+        onChange={handleFirstNameChange}
+      />
+      <br />
+      <label>Last name: </label>{" "}
+      <input
+        type="text"
+        placeholder="Last name"
+        value={person.lastName}
+        onChange={handleLastNameChange}
+      />
+      <br />
+      <label>Email: </label>{" "}
+      <input
+        type="email"
+        placeholder="Email"
+        value={person.email}
+        onChange={handleEmailChange}
+      />
+      <br />
+      <p>
+        {person.firstName} {person.lastName} ({person.email})
+      </p>
+    </form>
   );
 }
