@@ -1,38 +1,48 @@
 import { useState } from "react";
 
-let initialArtists = [
-  { id: 0, name: "Marta Colvin Andrade" },
-  { id: 1, name: "Lamidi Olonade Fakeye" },
-  { id: 2, name: "Louise Nevelson" },
+let initialShapes = [
+  { id: 0, type: "circle", x: 50, y: 100 },
+  { id: 1, type: "square", x: 150, y: 100 },
+  { id: 2, type: "circle", x: 250, y: 100 },
 ];
 
 export default function List() {
   // States
-  const [artists, setArtists] = useState(initialArtists);
+  const [shapes, setShapes] = useState(initialShapes);
 
   // Handlers
-  function handleDeleteButtonClick(id) {
-    let updateArtists = artists.filter((artist) => {
-      return artist.id !== id;
+  function handleClick() {
+    let newShapes = shapes.map((shape) => {
+      if (shape.type === "circle") {
+        return { ...shape, y: shape.y + 50 };
+      } else {
+        return shape;
+      }
     });
-    setArtists(updateArtists);
+    setShapes(newShapes);
   }
 
   return (
     <>
-      <h1>Inspiring sculptors: </h1>
-      <ul>
-        {artists.map((artist) => {
-          return (
-            <li key={artist.id}>
-              {artist.name}{" "}
-              <button onClick={() => handleDeleteButtonClick(artist.id)}>
-                Delete
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <p>
+        <button onClick={handleClick}>Move circles down!</button>
+      </p>
+      <div>
+        {shapes.map((shape) => (
+          <div
+            key={shape.id}
+            style={{
+              background: "purple",
+              position: "absolute",
+              left: shape.x,
+              top: shape.y,
+              borderRadius: shape.type === "circle" ? "50%" : "",
+              width: 20,
+              height: 20,
+            }}
+          ></div>
+        ))}
+      </div>
     </>
   );
 }
