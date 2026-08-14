@@ -13,16 +13,25 @@ export default function List() {
 
   // Handlers
   function handleMyListClick(itemId, nextSeen) {
-    const myNextList = [...myList];
-    const item = myNextList.find((i) => i.id === itemId);
-    item.seen = nextSeen;
+    const myNextList = myList.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, seen: nextSeen };
+      } else {
+        return item;
+      }
+    });
+
     setMyList(myNextList);
   }
 
   function handleYourListClick(itemId, nextSeen) {
-    const yourNextList = [...yourList];
-    const item = yourNextList.find((i) => i.id === itemId);
-    item.seen = nextSeen;
+    const yourNextList = yourList.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, seen: nextSeen };
+      } else {
+        return item;
+      }
+    });
     setYourList(yourNextList);
   }
 
