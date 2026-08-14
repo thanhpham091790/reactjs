@@ -1,41 +1,27 @@
 import { useState } from "react";
 
-let nextId = 3;
-const initialArtists = [
-  { id: 0, name: "Marta Colvin Andrade" },
-  { id: 1, name: "Lamidi Olonade Fakeye" },
-  { id: 2, name: "Louise Nevelson" },
+const initialList = [
+  { id: 0, title: "Big Bellies" },
+  { id: 1, title: "Lunar Landscape" },
+  { id: 2, title: "Terracotta Army" },
 ];
 
 export default function List() {
   // States
-  const [artists, setArtists] = useState(initialArtists);
-  const [name, setName] = useState("");
+  const [list, setList] = useState(initialList);
 
   // Handlers
-  function handleNameChange(e) {
-    setName(e.target.value);
+  function handleClick() {
+    const reverseList = [...list];
+    reverseList.reverse();
+    setList(reverseList);
   }
-  function handleNameInsert() {
-    const insertAt = 1;
-    const nextArtists = [
-      ...artists.slice(0, insertAt),
-      { id: nextId++, name: name },
-      ...artists.slice(insertAt),
-    ];
-    setArtists(nextArtists);
-  }
-
   return (
     <>
-      <h1>Inspiring sculptors:</h1>
-      <div>
-        <input type="text" value={name} onChange={handleNameChange} />{" "}
-        <button onClick={handleNameInsert}>Insert</button>
-      </div>
+      <button onClick={handleClick}>Reverse</button>
       <ul>
-        {artists.map((artist) => (
-          <li key={artist.id}>{artist.name}</li>
+        {list.map((item, index) => (
+          <li key={index}>{item.title}</li>
         ))}
       </ul>
     </>
