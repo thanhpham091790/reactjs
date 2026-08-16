@@ -1,66 +1,50 @@
 import { useState } from "react";
 
-const initialList = [
-  { id: 0, title: "Big Bellies", seen: false },
-  { id: 1, title: "Lunar Landscape", seen: false },
-  { id: 2, title: "Terracotta Army", seen: true },
+const initialProducts = [
+  {
+    id: 0,
+    name: "Baklava",
+    count: 1,
+  },
+  {
+    id: 1,
+    name: "Cheese",
+    count: 5,
+  },
+  {
+    id: 2,
+    name: "Spaghetti",
+    count: 2,
+  },
 ];
 
-export default function List() {
+export default function ShoppingCart() {
   // States
-  const [myList, setMyList] = useState(initialList);
-  const [yourList, setYourList] = useState(initialList);
+  const [products, setProducts] = useState(initialProducts);
 
   // Handlers
-  function handleMyListClick(itemId, nextSeen) {
-    const myNextList = myList.map((item) => {
-      if (item.id === itemId) {
-        return { ...item, seen: nextSeen };
+  function handleButtonClick(productId) {
+    const updatedProducts = products.map((product) => {
+      if (product.id === productId) {
+        return { ...product, count: product.count + 1 };
       } else {
-        return item;
+        return product;
       }
     });
-
-    setMyList(myNextList);
+    setProducts(updatedProducts);
   }
 
-  function handleYourListClick(itemId, nextSeen) {
-    const yourNextList = yourList.map((item) => {
-      if (item.id === itemId) {
-        return { ...item, seen: nextSeen };
-      } else {
-        return item;
-      }
-    });
-    setYourList(yourNextList);
-  }
-
+  // Rendering
   return (
     <>
-      <h1>Art Bucket List</h1>
-      <h2>My list of art to see:</h2>
-      <ItemList list={myList} onClick={handleMyListClick}></ItemList>
-      <h2>Your list of art to see:</h2>
-      <ItemList list={yourList} onClick={handleYourListClick}></ItemList>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            {product.name} (<b>{product.count}</b>){" "}
+            <button onClick={() => handleButtonClick(product.id)}>+</button>
+          </li>
+        ))}
+      </ul>
     </>
-  );
-}
-
-function ItemList({ list, onClick }) {
-  return (
-    <ul>
-      {list.map((item) => (
-        <li key={item.id}>
-          <input
-            type="checkbox"
-            checked={item.seen}
-            onChange={(e) => {
-              onClick(item.id, e.target.checked);
-            }}
-          />{" "}
-          {item.title}
-        </li>
-      ))}
-    </ul>
   );
 }
