@@ -1,7 +1,24 @@
 import { useState } from "react";
 
-export default function Todo({ todo, handleCheckboxChange, handleDeleteButtonClick }) {
+export default function Todo({
+  todo,
+  handleCheckboxChange,
+  handleDeleteButtonClick,
+}) {
+  /**
+   * All states
+   */
   const [edit, setEdit] = useState(false);
+
+  /**
+   * All handlers
+   */
+
+  // Handler when click on Edit button
+  function handleEditButtonClick() {
+    setEdit(true);
+  }
+
   return (
     <li>
       <input
@@ -20,8 +37,7 @@ export default function Todo({ todo, handleCheckboxChange, handleDeleteButtonCli
         </>
       ) : (
         <>
-          {todo.title}{" "}
-          <button onClick={() => handleEditClick(todo.id)}>Edit</button>
+          {todo.title} <button onClick={handleEditButtonClick}>Edit</button>
         </>
       )}{" "}
       <button onClick={() => handleDeleteButtonClick(todo.id)}>Delete</button>
