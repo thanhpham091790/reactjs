@@ -45,6 +45,18 @@ export default function TaskApp() {
     setTodos(newTodos);
   }
 
+  // Handler when edit input change
+  function handleEditInputChange(todoId) {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        return { ...todo, title: event.target.value };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(newTodos);
+  }
+
   // Handler when click on Delete button
   function handleDeleteButtonClick(todoId) {
     const newTodos = todos.filter((todo) => {
@@ -65,6 +77,7 @@ export default function TaskApp() {
         todos={todos}
         handleCheckboxChange={handleCheckboxChange}
         handleDeleteButtonClick={handleDeleteButtonClick}
+        handleEditInputChange={handleEditInputChange}
       />
     </>
   );

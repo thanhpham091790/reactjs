@@ -4,6 +4,7 @@ export default function Todo({
   todo,
   handleCheckboxChange,
   handleDeleteButtonClick,
+  handleEditInputChange,
 }) {
   /**
    * All states
@@ -31,7 +32,7 @@ export default function Todo({
           <input
             type="text"
             value={todo.title}
-            onChange={() => handleEditTodoChange(todo.id)}
+            onChange={() => handleEditInputChange(todo.id)}
           />{" "}
           <button onClick={() => handleSaveClick(todo.id)}>Save</button>
         </>

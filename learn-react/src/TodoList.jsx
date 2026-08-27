@@ -4,6 +4,7 @@ export default function TodoList({
   todos,
   handleCheckboxChange,
   handleDeleteButtonClick,
+  handleEditInputChange,
 }) {
   return (
     <ul>
@@ -13,6 +14,7 @@ export default function TodoList({
           todo={todo}
           handleCheckboxChange={handleCheckboxChange}
           handleDeleteButtonClick={handleDeleteButtonClick}
+          handleEditInputChange={handleEditInputChange}
         />
       ))}
     </ul>
