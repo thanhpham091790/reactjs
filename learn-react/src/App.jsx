@@ -1,67 +1,71 @@
 import { useState } from "react";
+import AddToDo from "./AddTodo";
+import TodoList from "./TodoList";
 
-const initialProducts = [
-  {
-    id: 0,
-    name: "Baklava",
-    count: 1,
-  },
-  {
-    id: 1,
-    name: "Cheese",
-    count: 5,
-  },
-  {
-    id: 2,
-    name: "Spaghetti",
-    count: 2,
-  },
+const initialTodos = [
+  { id: 0, title: "Buy milk", done: true },
+  { id: 1, title: "Eat tacos", done: false },
+  { id: 2, title: "Brew tea", done: false },
 ];
 
-export default function ShoppingCart() {
-  // States
-  const [products, setProducts] = useState(initialProducts);
+let nextId = 3;
 
-  // Handlers
-  function handleAddButtonClick(productId) {
-    const updatedProducts = products.map((product) => {
-      if (product.id === productId) {
-        return { ...product, count: product.count + 1 };
-      } else {
-        return product;
-      }
-    });
-    setProducts(updatedProducts);
+export default function TaskApp() {
+  /**
+   * All States
+   */
+  const [todos, setTodos] = useState(initialTodos);
+  const [title, setTitle] = useState("");
+
+  /**
+   * All Handlers
+   */
+
+  // Handler When change value of input before add it.
+  function handleAddInputChange(event) {
+    setTitle(event.target.value);
   }
 
-  function handleMinusButtonClick(productId) {
-    const updatedProducts = products
-      .map((product) => {
-        if (product.id === productId) {
-          return { ...product, count: product.count - 1 };
-        } else {
-          return product;
-        }
-      })
-      .filter((product) => product.count > 0);
+  // Handler when click on Add button
+  function handleAddButtonClick() {
+    if (title !== "") {
+      setTodos([...todos, { id: nextId++, title: title, done: false }]);
+    }
+  }
 
-    setProducts(updatedProducts);
+  // Handler when click on checkbox
+  function handleCheckboxChange(todoId) {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        return { ...todo, done: event.target.checked };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(newTodos);
+  }
+
+  // Handler when click on Delete button
+  function handleDeleteButtonClick(todoId) {
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== todoId;
+    });
+    setTodos(newTodos);
   }
 
   // Rendering
   return (
     <>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            {product.name} (<b>{product.count}</b>){" "}
-            <button onClick={() => handleAddButtonClick(product.id)}>+</button>{" "}
-            <button onClick={() => handleMinusButtonClick(product.id)}>
-              -
-            </button>
-          </li>
-        ))}
-      </ul>
+      <AddToDo
+        title={title}
+        handleAddInputChange={handleAddInputChange}
+        handleAddButtonClick={handleAddButtonClick}
+      />
+      <TodoList
+        todos={todos}
+        handleCheckboxChange={handleCheckboxChange}
+        handleDeleteButtonClick={handleDeleteButtonClick}
+      />
     </>
   );
 }
