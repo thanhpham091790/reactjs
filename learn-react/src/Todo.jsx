@@ -20,6 +20,11 @@ export default function Todo({
     setEdit(true);
   }
 
+  // Handler when click on Save button
+  function handleSaveButtonClick() {
+    setEdit(false);
+  }
+
   return (
     <li>
       <input
@@ -34,7 +39,7 @@ export default function Todo({
             value={todo.title}
             onChange={() => handleEditInputChange(todo.id)}
           />{" "}
-          <button onClick={() => handleSaveClick(todo.id)}>Save</button>
+          <button onClick={handleSaveButtonClick}>Save</button>
         </>
       ) : (
         <>
