@@ -6,6 +6,7 @@ export default function Form() {
    */
   const [answer, setAnswer] = useState("");
   const [status, setStatus] = useState("beginning");
+  const [error, setError] = useState(null);
 
   /**
    * All handlers
@@ -13,15 +14,26 @@ export default function Form() {
 
   // Handler when change answer
   function handleAnswerChange(event) {
-    setStatus("typing");
+    if (event.target.value != "") {
+      setStatus("typing");
+    } else {
+      setStatus("beginning");
+    }
     setAnswer(event.target.value);
   }
 
   // Handler when submit button is clicked
-  function handleSubmitButtonClick(event) {
+  async function handleSubmitButtonClick(event) {
     event.preventDefault();
-    submitForm(answer);
     setStatus("submitting");
+    try {
+      await submitForm(answer);
+      setStatus("success");
+      setError(null);
+    } catch (err) {
+      setStatus("typing");
+      setError(err.message);
+    }
   }
 
   /**
@@ -46,7 +58,16 @@ export default function Form() {
    * All functions
    */
   function submitForm(ans) {
-    console.log(ans);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let shouldError = ans.toLocaleLowerCase() !== "lima";
+        if (shouldError) {
+          reject(new Error("Good guess but a wrong answer. Try again!"));
+        } else {
+          resolve();
+        }
+      }, 1500);
+    });
   }
 
   return (
@@ -65,6 +86,9 @@ export default function Form() {
       <button disabled={isButtonDisabled} onClick={handleSubmitButtonClick}>
         Submit
       </button>
+
+      {status == "success" && <h2>Congratulation! Your answer is right.</h2>}
+      {error != null && <h2>{error}</h2>}
     </>
   );
 }
