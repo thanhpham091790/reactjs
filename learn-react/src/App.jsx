@@ -17,6 +17,13 @@ export default function Form() {
     setAnswer(event.target.value);
   }
 
+  // Handler when submit button is clicked
+  function handleSubmitButtonClick(event) {
+    event.preventDefault();
+    submitForm(answer);
+    setStatus("submitting");
+  }
+
   /**
    * All variables
    */
@@ -35,6 +42,13 @@ export default function Form() {
     isTextareaDisabled = false;
   }
 
+  /**
+   * All functions
+   */
+  function submitForm(ans) {
+    console.log(ans);
+  }
+
   return (
     <>
       <h1>City quiz</h1>
@@ -48,7 +62,9 @@ export default function Form() {
           disabled={isTextareaDisabled}
         ></textarea>
       </p>
-      <button disabled={isButtonDisabled}>Submit</button>
+      <button disabled={isButtonDisabled} onClick={handleSubmitButtonClick}>
+        Submit
+      </button>
     </>
   );
 }
