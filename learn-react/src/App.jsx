@@ -5,7 +5,7 @@ export default function Form() {
    * All states
    */
   const [answer, setAnswer] = useState("");
-  const [status, setStatus] = useState("typing");
+  const [status, setStatus] = useState("beginning");
 
   /**
    * All handlers
@@ -13,7 +13,26 @@ export default function Form() {
 
   // Handler when change answer
   function handleAnswerChange(event) {
+    setStatus("typing");
     setAnswer(event.target.value);
+  }
+
+  /**
+   * All variables
+   */
+
+  let isButtonDisabled, isTextareaDisabled;
+
+  if (status == "typing") {
+    isButtonDisabled = false;
+  } else {
+    isButtonDisabled = true;
+  }
+
+  if (status == "submitting") {
+    isTextareaDisabled = true;
+  } else {
+    isTextareaDisabled = false;
   }
 
   return (
@@ -23,9 +42,13 @@ export default function Form() {
         In which city is there a billboard that turns air into drinkable water?
       </p>
       <p>
-        <textarea value={answer} onChange={handleAnswerChange}></textarea>
+        <textarea
+          value={answer}
+          onChange={handleAnswerChange}
+          disabled={isTextareaDisabled}
+        ></textarea>
       </p>
-      <button disabled={status == "typing" ? true : false}>Submit</button>
+      <button disabled={isButtonDisabled}>Submit</button>
     </>
   );
 }
