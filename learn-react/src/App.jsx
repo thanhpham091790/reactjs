@@ -31,8 +31,8 @@ export default function Form() {
       setStatus("success");
       setError(null);
     } catch (err) {
-      setStatus("typing");
       setError(err.message);
+      setStatus("typing");
     }
   }
 
