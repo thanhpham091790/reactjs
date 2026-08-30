@@ -1,4 +1,18 @@
-export default function Chat({ message, handleMessageChange, to }) {
+import { useState } from "react";
+
+export default function Chat({ to }) {
+  /**
+   * All states
+   */
+  const [message, setMessage] = useState("");
+
+  /**
+   * All handlers
+   */
+
+  function handleMessageChange(e) {
+    setMessage(e.target.value);
+  }
   return (
     <div className="chat">
       <textarea

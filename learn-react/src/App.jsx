@@ -13,17 +13,12 @@ export default function Messenger() {
    * All states
    */
   const [to, setTo] = useState(contacts[0]);
-  const [message, setMessage] = useState("");
 
   /**
    * All handlers
    */
-  function handleButtonClick(index) {
-    setTo(contacts[index]);
-  }
-
-  function handleMessageChange(event) {
-    setMessage(event.target.value);
+  function handleButtonClick(contact) {
+    setTo(contact);
   }
 
   return (
@@ -32,11 +27,7 @@ export default function Messenger() {
         contacts={contacts}
         handleButtonClick={handleButtonClick}
       ></ContactList>
-      <Chat
-        message={message}
-        to={to}
-        handleMessageChange={handleMessageChange}
-      ></Chat>
+      <Chat key={to.email} to={to}></Chat>
     </>
   );
 }
