@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ContactList from "./ContactList";
+import Chat from "./Chat";
 
 const contacts = [
   { name: "Taylor", email: "taylor@mail.com" },
@@ -26,23 +28,15 @@ export default function Messenger() {
 
   return (
     <>
-      <div className="contact-list">
-        {contacts.map((contact, index) => {
-          return (
-            <button onClick={() => handleButtonClick(index)} key={index}>
-              {contact.name}
-            </button>
-          );
-        })}
-      </div>
-      <div className="chat">
-        <textarea
-          onChange={handleMessageChange}
-          value={message}
-          placeholder={"Chat to " + to.name}
-        ></textarea>
-        <button>Send to {to.email}</button>
-      </div>
+      <ContactList
+        contacts={contacts}
+        handleButtonClick={handleButtonClick}
+      ></ContactList>
+      <Chat
+        message={message}
+        to={to}
+        handleMessageChange={handleMessageChange}
+      ></Chat>
     </>
   );
 }
