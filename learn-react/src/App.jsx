@@ -1,41 +1,48 @@
 import { useState } from "react";
-import Panel from "./Panel";
 
-export default function Accordion() {
+const contacts = [
+  { name: "Taylor", email: "taylor@mail.com" },
+  { name: "Alice", email: "alice@mail.com" },
+  { name: "Bob", email: "bob@mail.com" },
+];
+
+export default function Messenger() {
   /**
    * All states
    */
-  const [panel, setPanel] = useState(1);
+  const [to, setTo] = useState(contacts[0]);
+  const [message, setMessage] = useState("");
+
+  /**
+   * All handlers
+   */
+  function handleButtonClick(index) {
+    setTo(contacts[index]);
+  }
+
+  function handleMessageChange(event) {
+    setMessage(event.target.value);
+  }
+
   return (
     <>
-      <h1>Almaty, Kazakhstan</h1>
-      <Panel>
-        <h2>About</h2>
-        <p>
-          With a population of about 2 million, Almaty is Kazakhstan's largest
-          city. From 1929 to 1997, it was its capital city.
-        </p>
-        {panel != 0 && (
-          <p>
-            <button onClick={() => setPanel(0)}>Show</button>
-          </p>
-        )}
-      </Panel>
-      <Panel>
-        <h2>Etymology</h2>
-        <p>
-          The name comes from алма, the Kazakh word for "apple" and is often
-          translated as "full of apples". In fact, the region surrounding Almaty
-          is thought to be the ancestral home of the apple, and the wild Malus
-          sieversii is considered a likely candidate for the ancestor of the
-          modern domestic apple.
-        </p>
-        {panel != 1 && (
-          <p>
-            <button onClick={() => setPanel(1)}>Show</button>
-          </p>
-        )}
-      </Panel>
+      <div className="contact-list">
+        {contacts.map((contact, index) => {
+          return (
+            <button onClick={() => handleButtonClick(index)} key={index}>
+              {contact.name}
+            </button>
+          );
+        })}
+      </div>
+      <div className="chat">
+        <textarea
+          onChange={handleMessageChange}
+          value={message}
+          placeholder={"Chat to " + to.name}
+        ></textarea>
+        <button>Send to {to.email}</button>
+      </div>
     </>
   );
 }
