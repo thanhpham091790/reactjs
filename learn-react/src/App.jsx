@@ -1,33 +1,34 @@
-import { useState } from "react";
-import ContactList from "./ContactList";
-import Chat from "./Chat";
+import { useReducer } from "react";
 
-const contacts = [
-  { name: "Taylor", email: "taylor@mail.com" },
-  { name: "Alice", email: "alice@mail.com" },
-  { name: "Bob", email: "bob@mail.com" },
-];
+const initialState = { count: 0 };
 
-export default function Messenger() {
+function reducer(state, action) {
+  switch (action.type) {
+    case "add":
+      return { count: state.count + 1 };
+    case "minus":
+      return { count: state.count - 1 };
+    case "reset":
+      return { count: 0 };
+    default:
+      return state;
+  }
+}
+
+export default function Counter() {
   /**
    * All states
    */
-  const [to, setTo] = useState(contacts[0]);
-
-  /**
-   * All handlers
-   */
-  function handleButtonClick(contact) {
-    setTo(contact);
-  }
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <>
-      <ContactList
-        contacts={contacts}
-        handleButtonClick={handleButtonClick}
-      ></ContactList>
-      <Chat key={to.email} to={to}></Chat>
+      <div>
+        <h1>Count:{state.count}</h1>
+        <button onClick={() => dispatch({ type: "add" })}>+</button>{" "}
+        <button onClick={() => dispatch({ type: "minus" })}>-</button>{" "}
+        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+      </div>
     </>
   );
 }
