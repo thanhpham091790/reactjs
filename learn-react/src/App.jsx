@@ -1,34 +1,25 @@
-import { useReducer } from "react";
+import Section from "./Section";
+import Heading from "./Heading";
 
-const initialState = { count: 0 };
-
-export default function Counter() {
-  /**
-   * All states
-   */
-  const [state, dispatch] = useReducer(reducer, initialState);
-
+export default function Page() {
   return (
-    <>
-      <div>
-        <h1>Count:{state.count}</h1>
-        <button onClick={() => dispatch({ type: "add" })}>+</button>{" "}
-        <button onClick={() => dispatch({ type: "minus" })}>-</button>{" "}
-        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
-      </div>
-    </>
+    <Section>
+      <Heading>H1-Heading</Heading>
+      <Section>
+        <Heading>H2-Heading</Heading>
+        <Section>
+          <Heading>H3-Heading</Heading>
+          <Section>
+            <Heading>H4-Heading</Heading>
+            <Section>
+              <Heading>H5-Heading</Heading>
+              <Section>
+                <Heading>H6-Heading</Heading>
+              </Section>
+            </Section>
+          </Section>
+        </Section>
+      </Section>
+    </Section>
   );
-}
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "add":
-      return { count: state.count + 1 };
-    case "minus":
-      return { count: state.count - 1 };
-    case "reset":
-      return { count: 0 };
-    default:
-      return state;
-  }
 }
