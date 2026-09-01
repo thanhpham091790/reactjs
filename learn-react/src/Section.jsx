@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { LevelContext } from "./LevelContext";
+
 export default function Section({ children }) {
+  const level = useContext(LevelContext);
   return (
     <div
       style={{
@@ -8,7 +12,7 @@ export default function Section({ children }) {
         margin: "10px",
       }}
     >
-      {children}
+      <LevelContext value={level + 1}>{children}</LevelContext>
     </div>
   );
 }
