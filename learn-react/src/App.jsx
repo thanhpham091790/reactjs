@@ -1,25 +1,13 @@
-import Section from "./Section";
-import Heading from "./Heading";
+import AddTask from "./AddTask";
+import TaskList from "./TaskList";
+import { TasksProvider } from "./TasksContext";
 
-export default function Page() {
+export default function TaskApp() {
   return (
-    <Section>
-      <Heading>H1-Heading</Heading>
-      <Section>
-        <Heading>H2-Heading</Heading>
-        <Section>
-          <Heading>H3-Heading</Heading>
-          <Section>
-            <Heading>H4-Heading</Heading>
-            <Section>
-              <Heading>H5-Heading</Heading>
-              <Section>
-                <Heading>H6-Heading</Heading>
-              </Section>
-            </Section>
-          </Section>
-        </Section>
-      </Section>
-    </Section>
+    <TasksProvider>
+      <h1>Day off in Kyoto</h1>
+      <AddTask></AddTask>
+      <TaskList></TaskList>
+    </TasksProvider>
   );
 }
