@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // The status state can be 'empty', 'typing', 'submitting', 'success', or 'error'
 
-export default function Form({ status = "submitting" }) {
+export default function Form({ status = "success" }) {
   // All variables
   let isButtonDisabled = true,
     isTextareaDisabled = false,
@@ -26,22 +26,29 @@ export default function Form({ status = "submitting" }) {
 
   return (
     <>
-      <h1>City quiz</h1>
-      <p>
-        In which city is there a billboard that turns air into drinkable water?
-      </p>
-      <p>
-        <textarea disabled={isTextareaDisabled}></textarea>
-        <br />
-        <button disabled={isButtonDisabled}>Submit</button>
-        <br />
-        <img
-          style={spinerStyles}
-          src="https://cdn.pixabay.com/animation/2023/08/11/21/18/21-18-05-265_512.gif"
-          width="30px"
-          height="30px"
-        />
-      </p>
+      {status === "success" ? (
+        <h1>Thank you</h1>
+      ) : (
+        <>
+          <h1>City quiz</h1>
+          <p>
+            In which city is there a billboard that turns air into drinkable
+            water?
+          </p>
+          <p>
+            <textarea disabled={isTextareaDisabled}></textarea>
+            <br />
+            <button disabled={isButtonDisabled}>Submit</button>
+            <br />
+            <img
+              style={spinerStyles}
+              src="https://loading.io/assets/mod/spinner/spinner/sample.gif"
+              width="100px"
+              height="100px"
+            />
+          </p>
+        </>
+      )}
     </>
   );
 }
