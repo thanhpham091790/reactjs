@@ -2,27 +2,47 @@ import { useState } from "react";
 
 // The status state can be 'empty', 'typing', 'submitting', 'success', or 'error'
 
-export default function Form({ status = "success" }) {
+export default function Form({ status = "error" }) {
   // All variables
-  let isButtonDisabled = true,
-    isTextareaDisabled = false,
-    isSpinerHidden = true,
-    spinerStyles = {};
+  let isButtonDisabled,
+    isTextareaDisabled,
+    isSpinerHidden,
+    isErrorMessageHidden,
+    spinerStyles,
+    errorMessageStyles;
 
   if (status === "empty") {
     isButtonDisabled = true;
+    isTextareaDisabled = false;
+    isSpinerHidden = true;
+    isErrorMessageHidden = true;
   }
+
   if (status === "typing") {
     isButtonDisabled = false;
+    isTextareaDisabled = false;
+    isSpinerHidden = true;
+    isErrorMessageHidden = true;
   }
 
   if (status === "submitting") {
     isButtonDisabled = true;
     isTextareaDisabled = true;
     isSpinerHidden = false;
+    isErrorMessageHidden = true;
+  }
+
+  if (status === "error") {
+    isButtonDisabled = true;
+    isTextareaDisabled = false;
+    isSpinerHidden = true;
+    isErrorMessageHidden = false;
   }
 
   spinerStyles = isSpinerHidden ? { display: "none" } : { display: "block" };
+  errorMessageStyles = isErrorMessageHidden
+    ? { display: "none" }
+    : { display: "block" };
 
   return (
     <>
@@ -47,6 +67,9 @@ export default function Form({ status = "success" }) {
               height="100px"
             />
           </p>
+          <h2 style={{ ...errorMessageStyles, color: "red" }}>
+            Nice try but your answer isn't correct !
+          </h2>
         </>
       )}
     </>
