@@ -2,12 +2,15 @@ import { useState } from "react";
 
 // The status state can be 'empty', 'typing', 'submitting', 'success', or 'error'
 
-export default function Form({ status = "empty" }) {
+export default function Form({ status = "typing" }) {
   // All variables
   let disabled;
 
   if (status === "empty") {
     disabled = true;
+  }
+  if (status === "typing") {
+    disabled = false;
   }
 
   return (
