@@ -4,38 +4,26 @@ import { useState } from "react";
 
 export default function Form({ status = "error" }) {
   // All variables
-  let isButtonDisabled,
-    isTextareaDisabled,
-    isSpinerHidden,
-    isErrorMessageHidden,
+  let isButtonDisabled = true,
+    isTextareaDisabled = false,
+    isSpinerHidden = true,
+    isErrorMessageHidden = true,
     spinerStyles,
     errorMessageStyles;
 
   if (status === "empty") {
-    isButtonDisabled = true;
-    isTextareaDisabled = false;
-    isSpinerHidden = true;
-    isErrorMessageHidden = true;
   }
 
   if (status === "typing") {
     isButtonDisabled = false;
-    isTextareaDisabled = false;
-    isSpinerHidden = true;
-    isErrorMessageHidden = true;
   }
 
   if (status === "submitting") {
-    isButtonDisabled = true;
     isTextareaDisabled = true;
     isSpinerHidden = false;
-    isErrorMessageHidden = true;
   }
 
   if (status === "error") {
-    isButtonDisabled = true;
-    isTextareaDisabled = false;
-    isSpinerHidden = true;
     isErrorMessageHidden = false;
   }
 
