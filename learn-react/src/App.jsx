@@ -1,13 +1,26 @@
-import AddTask from "./AddTask";
-import TaskList from "./TaskList";
-import TasksProvider from "./TasksContext";
+import { useState } from "react";
 
-export default function TaskApp() {
+// The status state can be 'empty', 'typing', 'submitting', 'success', or 'error'
+
+export default function Form({ status = "empty" }) {
+  // All variables
+  let disabled;
+
+  if (status === "empty") {
+    disabled = true;
+  }
+
   return (
-    <TasksProvider>
-      <h1>Day off in Kyoto</h1>
-      <AddTask></AddTask>
-      <TaskList></TaskList>
-    </TasksProvider>
+    <>
+      <h1>City quiz</h1>
+      <p>
+        In which city is there a billboard that turns air into drinkable water?
+      </p>
+      <p>
+        <textarea></textarea>
+        <br />
+        <button disabled={disabled}>Submit</button>
+      </p>
+    </>
   );
 }
