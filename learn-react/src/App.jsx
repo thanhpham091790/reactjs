@@ -2,7 +2,17 @@ import { useState } from "react";
 
 // The status state can be 'empty', 'typing', 'submitting', 'success', or 'error'
 
-export default function Form({ status = "error" }) {
+export default function Form({ status = "empty" }) {
+  // All states
+  const [answer, setAnswer] = useState("");
+  const [error, setError] = useState(null);
+
+  const [isEmpty, setIsEmpty] = useState(true);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   // All variables
   let isButtonDisabled = true,
     isTextareaDisabled = false,
