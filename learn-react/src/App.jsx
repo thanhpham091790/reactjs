@@ -3,12 +3,46 @@ import { useState } from "react";
 // The status state can be 'empty', 'typing', 'submitting', 'success', or 'error'
 
 export default function Form() {
-  // All states
+  /**
+   *  All states
+   */
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
 
   // The status state can be 'typing', submitting, or 'success'
   const [status, setStatus] = useState("typing");
+
+  /**
+   *  All handlers
+   */
+  function handleTextareaChange(e) {
+    setAnswer(e.target.value);
+  }
+
+  async function handleSubmitButtonClick(e) {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      await submitForm(answer);
+      setStatus("success");
+    } catch (err) {
+      setStatus("typing");
+      setError(err);
+    }
+  }
+
+  function submitForm() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let shouldError = answer.toLocaleLowerCase() !== "lima";
+        if (shouldError) {
+          reject(new Error("Good guess but a wrong answer. Try again!"));
+        } else {
+          resolve();
+        }
+      }, 1500);
+    });
+  }
 
   return (
     <>
@@ -22,9 +56,15 @@ export default function Form() {
             water?
           </p>
           <p>
-            <textarea disabled={status === "submitting"}></textarea>
+            <textarea
+              disabled={status === "submitting"}
+              onChange={handleTextareaChange}
+            ></textarea>
             <br />
-            <button disabled={answer === "" || status !== "typing"}>
+            <button
+              disabled={answer === "" || status !== "typing"}
+              onClick={handleSubmitButtonClick}
+            >
               Submit
             </button>
             <br />
@@ -38,7 +78,7 @@ export default function Form() {
           <h2
             style={{ color: "red", display: error === null ? "none" : "block" }}
           >
-            Nice try but your answer isn't correct !
+            {error !== null && error.message}
           </h2>
         </>
       )}
