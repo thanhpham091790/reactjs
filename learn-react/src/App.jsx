@@ -2,42 +2,13 @@ import { useState } from "react";
 
 // The status state can be 'empty', 'typing', 'submitting', 'success', or 'error'
 
-export default function Form({ status = "empty" }) {
+export default function Form() {
   // All states
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
-  const [isTyping, setIsTyping] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
-  // All variables
-  let isButtonDisabled = true,
-    isTextareaDisabled = false,
-    isSpinerHidden = true,
-    isErrorMessageHidden = true,
-    spinerStyles,
-    errorMessageStyles;
-
-  if (status === "empty") {
-  }
-
-  if (status === "typing") {
-    isButtonDisabled = false;
-  }
-
-  if (status === "submitting") {
-    isTextareaDisabled = true;
-    isSpinerHidden = false;
-  }
-
-  if (status === "error") {
-    isErrorMessageHidden = false;
-  }
-
-  spinerStyles = isSpinerHidden ? { display: "none" } : { display: "block" };
-  errorMessageStyles = isErrorMessageHidden
-    ? { display: "none" }
-    : { display: "block" };
+  // The status state can be 'typing', submitting, or 'success'
+  const [status, setStatus] = useState("typing");
 
   return (
     <>
@@ -51,18 +22,22 @@ export default function Form({ status = "empty" }) {
             water?
           </p>
           <p>
-            <textarea disabled={isTextareaDisabled}></textarea>
+            <textarea disabled={status === "submitting"}></textarea>
             <br />
-            <button disabled={isButtonDisabled}>Submit</button>
+            <button disabled={answer === "" || status !== "typing"}>
+              Submit
+            </button>
             <br />
             <img
-              style={spinerStyles}
+              style={{ display: status === "submitting" ? "block" : "none" }}
               src="https://loading.io/assets/mod/spinner/spinner/sample.gif"
               width="100px"
               height="100px"
             />
           </p>
-          <h2 style={{ ...errorMessageStyles, color: "red" }}>
+          <h2
+            style={{ color: "red", display: error === null ? "none" : "block" }}
+          >
             Nice try but your answer isn't correct !
           </h2>
         </>
