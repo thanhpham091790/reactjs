@@ -1,4 +1,4 @@
-export default function EditProfile({ state = "view" }) {
+export default function EditProfile({ state = "edit" }) {
   if (state === "view") {
     return (
       <>
@@ -17,6 +17,21 @@ export default function EditProfile({ state = "view" }) {
       </>
     );
   } else {
-    return <>Edit</>;
+    return (
+      <>
+        <p>
+          First name: <input type="text" value="Jane" />
+        </p>
+        <p>
+          Last name: <input type="text" value="Jacobs" />
+        </p>
+        <p>
+          <button>Save Profile</button>
+        </p>
+        <p>
+          <i>Hello, Jane Jacobs!</i>
+        </p>
+      </>
+    );
   }
 }
