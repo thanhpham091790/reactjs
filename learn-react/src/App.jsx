@@ -1,5 +1,21 @@
-export default function EditProfile({ state = "edit" }) {
-  if (state === "view") {
+import { useState } from "react";
+export default function EditProfile() {
+  /**
+   * All states
+   */
+  const [page, setPage] = useState("view"); // 'view' or 'edit'
+  const [firstName, setFirstName] = useState("Jane");
+  const [lastName, setLastName] = useState("Jacobs");
+
+  /**
+   * All handlers
+   */
+
+  function handleEditButtonClick() {
+    setPage("edit");
+  }
+
+  if (page === "view") {
     return (
       <>
         <p>
@@ -9,7 +25,7 @@ export default function EditProfile({ state = "edit" }) {
           Last name: <b>Jacobs</b>
         </p>
         <p>
-          <button>Edit Profile</button>
+          <button onClick={handleEditButtonClick}>Edit Profile</button>
         </p>
         <p>
           <i>Hello, Jane Jacobs!</i>
@@ -20,10 +36,10 @@ export default function EditProfile({ state = "edit" }) {
     return (
       <>
         <p>
-          First name: <input type="text" value="Jane" />
+          First name: <input type="text" value={firstName} />
         </p>
         <p>
-          Last name: <input type="text" value="Jacobs" />
+          Last name: <input type="text" value={lastName} />
         </p>
         <p>
           <button>Save Profile</button>
