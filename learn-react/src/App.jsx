@@ -15,20 +15,34 @@ export default function EditProfile() {
     setPage("edit");
   }
 
+  function handleSaveButtonClick() {
+    setPage("view");
+  }
+
+  function handleFirstNameChange(e) {
+    setFirstName(e.target.value);
+  }
+
+  function handleLastNameChange(e) {
+    setLastName(e.target.value);
+  }
+
   if (page === "view") {
     return (
       <>
         <p>
-          First name: <b>Jane</b>
+          First name: <b>{firstName}</b>
         </p>
         <p>
-          Last name: <b>Jacobs</b>
+          Last name: <b>{lastName}</b>
         </p>
         <p>
           <button onClick={handleEditButtonClick}>Edit Profile</button>
         </p>
         <p>
-          <i>Hello, Jane Jacobs!</i>
+          <i>
+            Hello, {firstName} {lastName}!
+          </i>
         </p>
       </>
     );
@@ -36,16 +50,24 @@ export default function EditProfile() {
     return (
       <>
         <p>
-          First name: <input type="text" value={firstName} />
+          First name:{" "}
+          <input
+            type="text"
+            value={firstName}
+            onChange={handleFirstNameChange}
+          />
         </p>
         <p>
-          Last name: <input type="text" value={lastName} />
+          Last name:{" "}
+          <input type="text" value={lastName} onChange={handleLastNameChange} />
         </p>
         <p>
-          <button>Save Profile</button>
+          <button onClick={handleSaveButtonClick}>Save Profile</button>
         </p>
         <p>
-          <i>Hello, Jane Jacobs!</i>
+          <i>
+            Hello, {firstName} {lastName}!
+          </i>
         </p>
       </>
     );
