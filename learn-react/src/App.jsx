@@ -1,75 +1,34 @@
 import { useState } from "react";
-export default function EditProfile() {
+
+export default function MovingDot() {
   /**
    * All states
    */
-  const [page, setPage] = useState("view"); // 'view' or 'edit'
-  const [firstName, setFirstName] = useState("Jane");
-  const [lastName, setLastName] = useState("Jacobs");
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  /**
-   * All handlers
-   */
-
-  function handleEditButtonClick() {
-    setPage("edit");
-  }
-
-  function handleSaveButtonClick() {
-    setPage("view");
-  }
-
-  function handleFirstNameChange(e) {
-    setFirstName(e.target.value);
-  }
-
-  function handleLastNameChange(e) {
-    setLastName(e.target.value);
-  }
-
-  if (page === "view") {
-    return (
-      <>
-        <p>
-          First name: <b>{firstName}</b>
-        </p>
-        <p>
-          Last name: <b>{lastName}</b>
-        </p>
-        <p>
-          <button onClick={handleEditButtonClick}>Edit Profile</button>
-        </p>
-        <p>
-          <i>
-            Hello, {firstName} {lastName}!
-          </i>
-        </p>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <p>
-          First name:{" "}
-          <input
-            type="text"
-            value={firstName}
-            onChange={handleFirstNameChange}
-          />
-        </p>
-        <p>
-          Last name:{" "}
-          <input type="text" value={lastName} onChange={handleLastNameChange} />
-        </p>
-        <p>
-          <button onClick={handleSaveButtonClick}>Save Profile</button>
-        </p>
-        <p>
-          <i>
-            Hello, {firstName} {lastName}!
-          </i>
-        </p>
-      </>
-    );
-  }
+  return (
+    <>
+      <div
+        style={{
+          position: "relative",
+          width: "calc(100vw - 18px)",
+          height: "calc(100vh - 18px)",
+          border: "1px solid lightgrey",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            backgroundColor: "green",
+            borderRadius: "50%",
+            left: -8,
+            top: -8,
+            width: 16,
+            height: 16,
+            transform: `translate(${position.x}px, ${position.y}px)`,
+          }}
+        />
+      </div>
+    </>
+  );
 }
