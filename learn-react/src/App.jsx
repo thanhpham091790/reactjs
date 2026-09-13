@@ -15,6 +15,13 @@ export default function FeedbackForm() {
     setText(e.target.value);
   }
 
+  /**
+   *
+   * All constants
+   */
+  const isSending = status === "sending";
+  const isSent = status === "sent";
+
   async function handleSendButtonClick(e) {
     e.preventDefault();
     setStatus("sending");
@@ -22,25 +29,23 @@ export default function FeedbackForm() {
     setStatus("sent");
   }
 
-  if (status === "sent") return <h1>Thanks for feedback!</h1>;
+  if (isSent) return <h1>Thanks for feedback!</h1>;
 
   return (
     <>
       <p>How was your stay at The Prancing Pony?</p>
       <p>
         <textarea
-          disabled={status === "sending"}
+          disabled={isSending}
           value={text}
           onChange={handleTextareaChange}
         />
         <br />
-        <button disabled={status === "sending"} onClick={handleSendButtonClick}>
+        <button disabled={isSending} onClick={handleSendButtonClick}>
           Send
         </button>
       </p>
-      <p style={{ display: status === "sending" ? "block" : "none" }}>
-        Sending...
-      </p>
+      <p style={{ display: isSending ? "block" : "none" }}>Sending...</p>
     </>
   );
 }
