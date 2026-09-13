@@ -1,57 +1,36 @@
 import { useState } from "react";
 
-export default function FeedbackForm() {
+export default function Form() {
   /**
    * All states
    */
-  const [text, setText] = useState("");
-  const [status, setStatus] = useState("typing"); // "typing", "sending", "sent"
-
-  /**
-   * All handlers
-   */
-
-  function handleTextareaChange(e) {
-    setText(e.target.value);
-  }
-
-  /**
-   *
-   * All constants
-   */
-  const isSending = status === "sending";
-  const isSent = status === "sent";
-
-  async function handleSendButtonClick(e) {
-    e.preventDefault();
-    setStatus("sending");
-    await sendFeedback(text);
-    setStatus("sent");
-  }
-
-  if (isSent) return <h1>Thanks for feedback!</h1>;
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   return (
     <>
-      <p>How was your stay at The Prancing Pony?</p>
+      <h3>Let's check you in</h3>
+      <div>
+        <p>
+          First name:{" "}
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </p>
+        <p>
+          Last name:{" "}
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </p>
+      </div>
       <p>
-        <textarea
-          disabled={isSending}
-          value={text}
-          onChange={handleTextareaChange}
-        />
-        <br />
-        <button disabled={isSending} onClick={handleSendButtonClick}>
-          Send
-        </button>
+        Your ticket will be issued to: {firstName} {lastName}
       </p>
-      <p style={{ display: isSending ? "block" : "none" }}>Sending...</p>
     </>
   );
-}
-
-function sendFeedback(text) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
 }
