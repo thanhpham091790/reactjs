@@ -6,13 +6,38 @@ export default function Form() {
    */
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
-  const [status, setStatus] = useState("empty"); // typing, submitting, success
+  const [status, setStatus] = useState("typing"); // typing, submitting, success
 
   /**
    * All handlers
    */
   function handleAnswerChange(e) {
     setAnswer(e.target.value);
+  }
+
+  function checkAnswer(answer) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let shouldError = answer.toLowerCase() !== "lima";
+        if (shouldError) {
+          reject(new Error("Good guess but a wrong answer. Try again!"));
+        } else {
+          resolve();
+        }
+      }, 1500);
+    });
+  }
+
+  async function handleSubmitButtonClick(e) {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      await checkAnswer(answer);
+      setStatus("success");
+    } catch (error) {
+      setStatus("typing");
+      setError(error);
+    }
   }
 
   if (status === "success") {
@@ -32,16 +57,15 @@ export default function Form() {
           value={answer}
         ></textarea>
         <br />
-        <button disabled={answer === "" || status === "submitting"}>
+        <button
+          disabled={answer === "" || status === "submitting"}
+          onClick={handleSubmitButtonClick}
+        >
           Submit
         </button>
       </p>
       {status === "submitting" && <p>Loading...</p>}
-      {status === "error" && (
-        <h3 style={{ color: "red" }}>
-          Good guess but a wrong answer. Try again!
-        </h3>
-      )}
+      {error !== null && <h3 style={{ color: "red" }}>{error.message}</h3>}
     </form>
   );
 }
