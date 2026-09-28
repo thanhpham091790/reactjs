@@ -1,4 +1,4 @@
-export default function Form({ status = "submitting" }) {
+export default function Form({ status = "error" }) {
   if (status === "success") {
     return <h1>Thank you!</h1>;
   }
@@ -17,6 +17,11 @@ export default function Form({ status = "submitting" }) {
         </button>
       </p>
       {status === "submitting" && <p>Loading...</p>}
+      {status === "error" && (
+        <h3 style={{ color: "red" }}>
+          Good guess but a wrong answer. Try again!
+        </h3>
+      )}
     </form>
   );
 }
