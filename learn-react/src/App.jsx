@@ -6,7 +6,7 @@ export default function Form({ status = "error" }) {
    */
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
-  const [status, setStatus] = useState("isEmpty"); // isEmpty, isTyping, isSubmitting, isSuccess, isError
+  const [status, setStatus] = useState("isEmpty"); // isTyping, isSubmitting, isSuccess, isError
 
   if (status === "success") {
     return <h1>Thank you!</h1>;
