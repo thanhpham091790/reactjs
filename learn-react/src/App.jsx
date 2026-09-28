@@ -1,4 +1,17 @@
+import { use, useState } from "react";
+
 export default function Form({ status = "error" }) {
+  /**
+   * All states
+   */
+  const [answer, setAnswer] = useState("");
+  const [error, setError] = useState(null);
+  const [isEmpty, setIsEmpty] = useState(true);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   if (status === "success") {
     return <h1>Thank you!</h1>;
   }
