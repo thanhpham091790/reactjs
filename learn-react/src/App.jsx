@@ -1,12 +1,19 @@
 import { use, useState } from "react";
 
-export default function Form({ status = "error" }) {
+export default function Form() {
   /**
    * All states
    */
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
   const [status, setStatus] = useState("empty"); // typing, submitting, success
+
+  /**
+   * All handlers
+   */
+  function handleAnswerChange(e) {
+    setAnswer(e.target.value);
+  }
 
   if (status === "success") {
     return <h1>Thank you!</h1>;
@@ -19,9 +26,13 @@ export default function Form({ status = "error" }) {
         In which city is there a billboard that turns air into drinkable water?
       </p>
       <p>
-        <textarea disabled={status === "submitting"}></textarea>
+        <textarea
+          disabled={status === "submitting"}
+          onChange={handleAnswerChange}
+          value={answer}
+        ></textarea>
         <br />
-        <button disabled={status === "empty" || status === "submitting"}>
+        <button disabled={answer === "" || status === "submitting"}>
           Submit
         </button>
       </p>
