@@ -1,71 +1,28 @@
-import { use, useState } from "react";
-
-export default function Form() {
-  /**
-   * All states
-   */
-  const [answer, setAnswer] = useState("");
-  const [error, setError] = useState(null);
-  const [status, setStatus] = useState("typing"); // typing, submitting, success
-
-  /**
-   * All handlers
-   */
-  function handleAnswerChange(e) {
-    setAnswer(e.target.value);
-  }
-
-  function checkAnswer(answer) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let shouldError = answer.toLowerCase() !== "lima";
-        if (shouldError) {
-          reject(new Error("Good guess but a wrong answer. Try again!"));
-        } else {
-          resolve();
-        }
-      }, 1500);
-    });
-  }
-
-  async function handleSubmitButtonClick(e) {
-    e.preventDefault();
-    setStatus("submitting");
-    try {
-      await checkAnswer(answer);
-      setStatus("success");
-    } catch (error) {
-      setStatus("typing");
-      setError(error);
-    }
-  }
-
-  if (status === "success") {
-    return <h1>Thank you!</h1>;
-  }
-
+export default function MovingDot({ position = { x: 0, y: 0 } }) {
   return (
-    <form>
-      <h1>City quiz</h1>
-      <p>
-        In which city is there a billboard that turns air into drinkable water?
-      </p>
-      <p>
-        <textarea
-          disabled={status === "submitting"}
-          onChange={handleAnswerChange}
-          value={answer}
-        ></textarea>
-        <br />
-        <button
-          disabled={answer === "" || status === "submitting"}
-          onClick={handleSubmitButtonClick}
-        >
-          Submit
-        </button>
-      </p>
-      {status === "submitting" && <p>Loading...</p>}
-      {error !== null && <h3 style={{ color: "red" }}>{error.message}</h3>}
-    </form>
+    <>
+      <div
+        style={{
+          position: "relative",
+          width: "calc(100vw - 16px)",
+          minHeight: "calc(100vh - 16px)",
+          border: "1px solid green",
+          boxSizing: "border-box",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            width: "20px",
+            height: "20px",
+            borderRadius: "50%",
+            backgroundColor: "red",
+            position: "absolute",
+            top: `${position.x}px`,
+            left: `${position.y}px`,
+          }}
+        ></div>
+      </div>
+    </>
   );
 }
