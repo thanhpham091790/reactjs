@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-export default function FeedbackForm({ status = "typing" }) {
+export default function FeedbackForm() {
   /**
    * States
    */
   const [text, setText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSent, setIsSent] = useState(false);
+  const [status, setStatus] = useState("typing"); // 'typing', 'submitting', 'sent'
+
   return (
     <>
       <h1>Thanks for feedback!</h1>
