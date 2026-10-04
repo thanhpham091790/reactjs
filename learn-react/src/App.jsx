@@ -7,16 +7,47 @@ export default function FeedbackForm() {
   const [text, setText] = useState("");
   const [status, setStatus] = useState("typing"); // 'typing', 'submitting', 'sent'
 
+  /**
+   * Handlers
+   */
+  function handleTextChange(e) {
+    setText(e.target.value);
+  }
+
+  async function handleSendButtonClick(e) {
+    e.preventDefault();
+    setStatus("submitting");
+    await sendFeedback(text);
+    setStatus("sent");
+  }
+
+  function sendFeedback(text) {
+    return new Promise((resolve) => setTimeout(resolve, 2000));
+  }
+
+  const isSubmitting = status === "submitting";
+  const isSent = status === "sent";
+
+  if (isSent) return <h1>Thanks for feedback!</h1>;
+
   return (
-    <>
-      <h1>Thanks for feedback!</h1>
+    <form>
       <p>How was your stay at The Prancing Pony?</p>
       <p>
-        <textarea></textarea>
+        <textarea
+          value={text}
+          onChange={handleTextChange}
+          disabled={isSubmitting || isSent}
+        ></textarea>
         <br />
-        <button>Send</button>
+        <button
+          onClick={handleSendButtonClick}
+          disabled={isSubmitting || isSent}
+        >
+          Send
+        </button>
       </p>
-      <p>Sending...</p>
-    </>
+      {isSubmitting && <p>Sending...</p>}
+    </form>
   );
 }
