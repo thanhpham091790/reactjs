@@ -1,38 +1,14 @@
-import { useState } from "react";
-export default function MovingDot() {
-  // States
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  // Handlers
-  function handlePointerMove(e) {
-    setPosition({ x: e.clientX - 20, y: e.clientY - 20 });
-  }
+export default function FeedbackForm({ status = "typing" }) {
   return (
     <>
-      <div
-        onPointerMove={handlePointerMove}
-        style={{
-          position: "relative",
-          width: "calc(100vw - 16px)",
-          minHeight: "calc(100vh - 16px)",
-          border: "1px solid green",
-          boxSizing: "border-box",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            width: "24px",
-            height: "24px",
-            borderRadius: "50%",
-            backgroundColor: "red",
-            position: "absolute",
-            left: 0,
-            top: 0,
-            transform: `translate(${position.x}px, ${position.y}px)`,
-          }}
-        ></div>
-      </div>
+      <h1>Thanks for feedback!</h1>
+      <p>How was your stay at The Prancing Pony?</p>
+      <p>
+        <textarea></textarea>
+        <br />
+        <button>Send</button>
+      </p>
+      <p>Sending...</p>
     </>
   );
 }
