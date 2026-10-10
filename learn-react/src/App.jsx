@@ -1,54 +1,39 @@
 import { useState } from "react";
 
-export default function Checkin() {
+const initialItems = [
+  { title: "pretzels", id: 0 },
+  { title: "crispy seaweed", id: 1 },
+  { title: "granola bar", id: 2 },
+];
+
+export default function Menu() {
   /**
    * States
    */
-  const [name, setName] = useState({
-    first: "Thanh",
-    last: "Pham",
-  });
+  const [items, setItems] = useState(initialItems);
+  const [selectedItem, setSelectedItem] = useState(0);
 
   /**
    * Handlers
    */
-  function handleNameChange(e) {
-    const { name, value } = e.target;
-    setName((prevName) => ({
-      ...prevName,
-      [name]: value,
-    }));
-  }
 
   return (
     <>
-      <h2>Let's check you in</h2>
-      <div>
-        <p>
-          <label>First name: </label>
-          <input
-            type="text"
-            value={name.first}
-            name="first"
-            onChange={handleNameChange}
-          />
-        </p>
-        <p>
-          <label>Last name: </label>
-          <input
-            type="text"
-            value={name.last}
-            name="last"
-            onChange={handleNameChange}
-          />
-        </p>
-      </div>
+      <h1>What's your travel snack?</h1>
       <p>
-        Your ticket will be issued to:{" "}
-        <b>
-          {name.first} {name.last}
-        </b>
+        <ul>
+          <li>
+            pretzels <button>Choose</button>
+          </li>
+          <li>
+            crispy seaweed <button>Choose</button>
+          </li>
+          <li>
+            granola bar <button>Choose</button>
+          </li>
+        </ul>
       </p>
+      <p>You picked pretzels.</p>
     </>
   );
 }
