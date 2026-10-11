@@ -21,6 +21,19 @@ export default function Menu() {
     setSelectedItem(id);
   }
 
+  function handleInputChange(event, id) {
+    console.log(id);
+    const updatedItems = items.map((item) => {
+      if (item.id === id) {
+        return { ...item, title: event.target.value };
+      } else {
+        return item;
+      }
+    });
+    console.log(updatedItems);
+    setItems(updatedItems);
+  }
+
   /**
    * Variables
    */
@@ -34,7 +47,11 @@ export default function Menu() {
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              {item.title}{" "}
+              <input
+                type="text"
+                value={item.title}
+                onChange={() => handleInputChange(event, item.id)}
+              />{" "}
               <button onClick={() => handleChooseButtonClick(item.id)}>
                 Choose
               </button>
