@@ -17,23 +17,32 @@ export default function Menu() {
    * Handlers
    */
 
+  function handleChooseButtonClick(id) {
+    setSelectedItem(id);
+  }
+
+  /**
+   * Variables
+   */
+  const selectedItemTitle = items.filter((item) => item.id === selectedItem)[0]
+    .title;
+
   return (
     <>
       <h1>What's your travel snack?</h1>
-      <p>
+      <div>
         <ul>
-          <li>
-            pretzels <button>Choose</button>
-          </li>
-          <li>
-            crispy seaweed <button>Choose</button>
-          </li>
-          <li>
-            granola bar <button>Choose</button>
-          </li>
+          {items.map((item) => (
+            <li key={item.id}>
+              {item.title}{" "}
+              <button onClick={() => handleChooseButtonClick(item.id)}>
+                Choose
+              </button>
+            </li>
+          ))}
         </ul>
-      </p>
-      <p>You picked pretzels.</p>
+      </div>
+      <p>You picked {selectedItemTitle}.</p>
     </>
   );
 }
